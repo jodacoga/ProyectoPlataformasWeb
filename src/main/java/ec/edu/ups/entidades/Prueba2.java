@@ -24,6 +24,8 @@ public class Prueba2 implements Serializable {
     private int dd;
     private String aa;
     
+    private int cambioMaster;
+    
     public int getId() {
         
         return id;
