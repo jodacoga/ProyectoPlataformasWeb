@@ -21,8 +21,11 @@ public class Prueba2 implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
+    private int dd;
+    private String aa;
+    
     public int getId() {
+        
         return id;
     }
 
