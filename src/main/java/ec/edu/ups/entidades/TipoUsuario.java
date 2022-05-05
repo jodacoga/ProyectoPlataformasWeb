@@ -4,7 +4,15 @@
  */
 package ec.edu.ups.entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  *
@@ -13,13 +21,28 @@ import jakarta.persistence.Entity;
 @Entity
 public class TipoUsuario {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idTipo;
+    
     private String descripcion;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuario")
+    private Set<Usuario> usuarios = new HashSet<Usuario>();
 
     public TipoUsuario() {
     }
 
     public TipoUsuario(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Set<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 
     public String getDescripcion() {
@@ -29,6 +52,35 @@ public class TipoUsuario {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        return "TipoUsuario{" + "descripcion=" + descripcion + ", usuarios=" + usuarios + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.descripcion);
+        hash = 37 * hash + Objects.hashCode(this.usuarios);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TipoUsuario other = (TipoUsuario) obj;
+        return true;
+    }
+    
     
     
 }
