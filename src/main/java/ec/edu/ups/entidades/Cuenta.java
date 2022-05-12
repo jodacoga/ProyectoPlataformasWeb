@@ -62,6 +62,11 @@ public class Cuenta implements Serializable {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    @Override
+    public String toString() {
+        return "Cuenta{" + "correo=" + correo + ", contrasena=" + contrasena + ", usuario=" + usuario + '}';
+    }
     
     
     
