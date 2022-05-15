@@ -5,7 +5,12 @@
 package ec.edu.ups.entidades;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,9 +18,15 @@ import java.util.Set;
  *
  * @author johan
  */
-public class Sucursal {
+@Entity
+public class Sucursal implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigo;
+    
     private String nombre;
     private String doreccion;
     private double latencia;
