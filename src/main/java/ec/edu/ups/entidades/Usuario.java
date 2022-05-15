@@ -39,6 +39,10 @@ public class Usuario implements Serializable {
     @JoinColumn
     private TipoUsuario tipoUsuario;
     
+    @ManyToOne
+    @JoinColumn
+    private Sucursal sucursal;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Cuenta cuenta;
     
