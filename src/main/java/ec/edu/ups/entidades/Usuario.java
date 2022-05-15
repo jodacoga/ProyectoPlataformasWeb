@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Cuenta cuenta;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura" )
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura")
     private Factura factura;
     
     public Usuario() {
