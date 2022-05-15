@@ -14,9 +14,9 @@ import jakarta.persistence.PersistenceContext;
  * @author johan
  */
 @Stateless
-public class CuentaFacade extends AbstractFacade<Cuenta>{
-    
-        @PersistenceContext(name = "PlataformasWeb")
+public class CuentaFacade extends AbstractFacade<Cuenta> {
+
+    @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
 
     public CuentaFacade() {
@@ -28,6 +28,4 @@ public class CuentaFacade extends AbstractFacade<Cuenta>{
         return em;
     }
 
-       
-    
 }
