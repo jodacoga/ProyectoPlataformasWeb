@@ -18,14 +18,15 @@ import java.util.Date;
  */
 @Entity
 public class TarjetaCredito {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idTarjeta;
     private String numeroTarjeta;
-    private Date fechaCa; 
+    private Date fechaCa;
     private String codigoSegu;
     private String nombreTarj;
-    
+
     @ManyToOne
     @JoinColumn
     private Cuenta cuenta;
@@ -39,14 +40,6 @@ public class TarjetaCredito {
         this.codigoSegu = codigoSegu;
         this.nombreTarj = nombreTarj;
         this.cuenta = cuenta;
-    }
-
-    public int getIdTarjeta() {
-        return idTarjeta;
-    }
-
-    public void setIdTarjeta(int idTarjeta) {
-        this.idTarjeta = idTarjeta;
     }
 
     public String getNumeroTarjeta() {
@@ -65,6 +58,14 @@ public class TarjetaCredito {
         this.fechaCa = fechaCa;
     }
 
+    public String getCodigoSegu() {
+        return codigoSegu;
+    }
+
+    public void setCodigoSegu(String codigoSegu) {
+        this.codigoSegu = codigoSegu;
+    }
+
     public String getNombreTarj() {
         return nombreTarj;
     }
@@ -80,8 +81,5 @@ public class TarjetaCredito {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
-    
-    
-    
-    
+
 }

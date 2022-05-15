@@ -39,29 +39,35 @@ public class Usuario implements Serializable {
     @JoinColumn
     private TipoUsuario tipoUsuario;
     
+    @ManyToOne
+    @JoinColumn
+    private Sucursal sucursalUsuario;
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Cuenta cuenta;
     
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario) {
+    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario, Sucursal sucursalUsuario, Cuenta cuenta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.fechaNacimiento = fechaNacimiento;
         this.tipoUsuario = tipoUsuario;
-    }
-
-    public Cuenta getCuenta() {
-        return cuenta;
-    }
-
-    public void setCuenta(Cuenta cuenta) {
+        this.sucursalUsuario = sucursalUsuario;
         this.cuenta = cuenta;
     }
 
-  
+
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     public String getNombre() {
         return nombre;
@@ -103,10 +109,30 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public Sucursal getSucursalUsuario() {
+        return sucursalUsuario;
+    }
+
+    public void setSucursalUsuario(Sucursal sucursalUsuario) {
+        this.sucursalUsuario = sucursalUsuario;
+    }
+
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + '}';
+        return "Usuario{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + ", sucursalUsuario=" + sucursalUsuario + ", cuenta=" + cuenta + '}';
     }
+
+   
+
     
     
     
