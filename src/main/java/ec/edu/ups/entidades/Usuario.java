@@ -49,12 +49,12 @@ public class Usuario implements Serializable {
     private Cuenta cuenta;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura")
-    private Factura factura;
+    private Factura facturaUsuario;
     
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario, Sucursal sucursalUsuario, Cuenta cuenta) {
+    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario, Sucursal sucursalUsuario, Cuenta cuenta, Factura facturaUsuario) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
@@ -62,7 +62,10 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
         this.sucursalUsuario = sucursalUsuario;
         this.cuenta = cuenta;
+        this.facturaUsuario = facturaUsuario;
     }
+
+    
 
 
 
@@ -131,13 +134,15 @@ public class Usuario implements Serializable {
         this.cuenta = cuenta;
     }
 
-    public Factura getFactura() {
-        return factura;
+    public Factura getFacturaUsuario() {
+        return facturaUsuario;
     }
 
-    public void setFactura(Factura factura) {
-        this.factura = factura;
+    public void setFacturaUsuario(Factura facturaUsuario) {
+        this.facturaUsuario = facturaUsuario;
     }
+
+    
     
 
     @Override
