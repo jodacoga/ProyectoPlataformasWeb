@@ -43,7 +43,7 @@ public class Pedido implements Serializable{
     
     @OneToOne
     @JoinColumn
-    private Factura factura;
+    private Factura pedidoFactura;
 
     public Pedido() {
     }
@@ -55,7 +55,7 @@ public class Pedido implements Serializable{
         this.distanciaRecorrido = distanciaRecorrido;
         this.costoEnvio = costoEnvio;
         this.cuentaPedido = cuentaPedido;
-        this.factura = factura;
+        this.pedidoFactura = factura;
     }
 
 
@@ -117,16 +117,16 @@ public class Pedido implements Serializable{
 
  
     public Factura getFactura() {
-        return factura;
+        return pedidoFactura;
     }
 
     public void setFactura(Factura factura) {
-        this.factura = factura;
+        this.pedidoFactura = factura;
     }
 
     @Override
     public String toString() {
-        return "Pedido{" + "idPedido=" + idPedido + ", tiempoAprox=" + tiempoAprox + ", estado=" + estado + ", sucursal=" + sucursal + ", distanciaRecorrido=" + distanciaRecorrido + ", costoEnvio=" + costoEnvio + ", cuentaPedido=" + cuentaPedido + ", factura=" + factura + '}';
+        return "Pedido{" + "idPedido=" + idPedido + ", tiempoAprox=" + tiempoAprox + ", estado=" + estado + ", sucursal=" + sucursal + ", distanciaRecorrido=" + distanciaRecorrido + ", costoEnvio=" + costoEnvio + ", cuentaPedido=" + cuentaPedido + ", factura=" + pedidoFactura + '}';
     }
 
     

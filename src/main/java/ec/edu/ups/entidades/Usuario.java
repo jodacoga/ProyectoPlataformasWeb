@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 /**
@@ -33,6 +34,7 @@ public class Usuario implements Serializable {
     
     @Column(unique=true)
     private String cedula;
+    
     private Date fechaNacimiento;
     
     @ManyToOne
@@ -45,6 +47,9 @@ public class Usuario implements Serializable {
     
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Cuenta cuenta;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura" )
+    private Factura factura;
     
     public Usuario() {
     }
@@ -125,6 +130,15 @@ public class Usuario implements Serializable {
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
+
+    public Factura getFactura() {
+        return factura;
+    }
+
+    public void setFactura(Factura factura) {
+        this.factura = factura;
+    }
+    
 
     @Override
     public String toString() {
