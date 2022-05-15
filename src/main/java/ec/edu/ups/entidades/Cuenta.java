@@ -34,10 +34,10 @@ public class Cuenta implements Serializable {
     @JoinColumn
     private Usuario usuario;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tarjetaC")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
     private Set<TarjetaCredito> tarjetaC = new HashSet<TarjetaCredito>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaPedido")
     private Set<Pedido> pedido = new HashSet<Pedido>();
 
     public Cuenta() {

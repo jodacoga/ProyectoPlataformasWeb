@@ -39,7 +39,7 @@ public class Pedido implements Serializable{
     
     @ManyToOne
     @JoinColumn
-    private Cuenta cuenta;
+    private Cuenta cuentaPedido;
     
     @OneToOne
     @JoinColumn
@@ -48,15 +48,16 @@ public class Pedido implements Serializable{
     public Pedido() {
     }
 
-    public Pedido(Time tiempoAprox, boolean estado, Sucursal sucursal, double distanciaRecorrido, double costoEnvio, Cuenta cuenta, Factura factura) {
+    public Pedido(Time tiempoAprox, boolean estado, Sucursal sucursal, double distanciaRecorrido, double costoEnvio, Cuenta cuentaPedido, Factura factura) {
         this.tiempoAprox = tiempoAprox;
         this.estado = estado;
         this.sucursal = sucursal;
         this.distanciaRecorrido = distanciaRecorrido;
         this.costoEnvio = costoEnvio;
-        this.cuenta = cuenta;
+        this.cuentaPedido = cuentaPedido;
         this.factura = factura;
     }
+
 
     public Time getTiempoAprox() {
         return tiempoAprox;
@@ -98,14 +99,23 @@ public class Pedido implements Serializable{
         this.costoEnvio = costoEnvio;
     }
 
-    public Cuenta getCuenta() {
-        return cuenta;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setCuenta(Cuenta cuenta) {
-        this.cuenta = cuenta;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
+    public Cuenta getCuentaPedido() {
+        return cuentaPedido;
+    }
+
+    public void setCuentaPedido(Cuenta cuentaPedido) {
+        this.cuentaPedido = cuentaPedido;
+    }
+
+ 
     public Factura getFactura() {
         return factura;
     }
@@ -116,8 +126,9 @@ public class Pedido implements Serializable{
 
     @Override
     public String toString() {
-        return "Pedido{" + "tiempoAprox=" + tiempoAprox + ", estado=" + estado + ", sucursal=" + sucursal + ", distanciaRecorrido=" + distanciaRecorrido + ", costoEnvio=" + costoEnvio + ", cuenta=" + cuenta + ", factura=" + factura + '}';
+        return "Pedido{" + "idPedido=" + idPedido + ", tiempoAprox=" + tiempoAprox + ", estado=" + estado + ", sucursal=" + sucursal + ", distanciaRecorrido=" + distanciaRecorrido + ", costoEnvio=" + costoEnvio + ", cuentaPedido=" + cuentaPedido + ", factura=" + factura + '}';
     }
+
     
     
 }
