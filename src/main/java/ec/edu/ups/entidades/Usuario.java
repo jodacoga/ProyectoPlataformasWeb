@@ -16,6 +16,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -49,12 +51,13 @@ public class Usuario implements Serializable {
     private Cuenta cuenta;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura")
-    private Factura facturaUsuario;
+    private Set<Factura> facturaUsuario = new HashSet<Factura>();
+    
     
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario, Sucursal sucursalUsuario, Cuenta cuenta, Factura facturaUsuario) {
+    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario, Sucursal sucursalUsuario, Cuenta cuenta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
@@ -62,8 +65,9 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
         this.sucursalUsuario = sucursalUsuario;
         this.cuenta = cuenta;
-        this.facturaUsuario = facturaUsuario;
     }
+
+
 
     
 
@@ -134,11 +138,11 @@ public class Usuario implements Serializable {
         this.cuenta = cuenta;
     }
 
-    public Factura getFacturaUsuario() {
+    public Set<Factura> getFacturaUsuario() {
         return facturaUsuario;
     }
 
-    public void setFacturaUsuario(Factura facturaUsuario) {
+    public void setFacturaUsuario(Set<Factura> facturaUsuario) {
         this.facturaUsuario = facturaUsuario;
     }
 
