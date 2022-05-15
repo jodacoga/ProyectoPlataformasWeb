@@ -38,6 +38,9 @@ public class Sucursal implements Serializable{
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursal")
     private Set<Pedido> pedido = new HashSet<Pedido>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursalCategoria")
+    private Set<CategoriaSucursal> categoriaSucursal = new HashSet<CategoriaSucursal>();
+
     public Sucursal() {
     }
 
@@ -96,11 +99,27 @@ public class Sucursal implements Serializable{
         this.pedido = pedido;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public Set<CategoriaSucursal> getCategoriaSucursal() {
+        return categoriaSucursal;
+    }
+
+    public void setCategoriaSucursal(Set<CategoriaSucursal> categoriaSucursal) {
+        this.categoriaSucursal = categoriaSucursal;
+    }
+
     @Override
     public String toString() {
-        return "Sucursal{" + "nombre=" + nombre + ", doreccion=" + doreccion + ", latencia=" + latencia + ", longitud=" + longitud + ", usuario=" + usuario + ", pedido=" + pedido + '}';
+        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", doreccion=" + doreccion + ", latencia=" + latencia + ", longitud=" + longitud + ", usuario=" + usuario + ", pedido=" + pedido + ", categoriaSucursal=" + categoriaSucursal + '}';
     }
-   
+
     
     
     
