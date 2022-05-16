@@ -15,14 +15,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h3>Ingresar Datos</h3>
         <h:form>
         <ul>
-            <li>Nombre:<h:inputText size="10" value="#{usuarioBean.nombre}"/> </li>
-            <li>Apellido:<h:inputText size="10" value="#{usuarioBean.apellido}"/></li>
-            <li>Cedula:<h:inputText size="10" value="#{usuarioBean.cedula}"/></li>
-            <li>Fecha Nacimiento:<h:inputText size="10" value="#{usuarioBean.fechaNacimiento}"/></li>
+            <li>Nombre:<h:inputText value="#{usuarioBean.nombre}"/> </li>
             
+            <li>Apellido:<h:inputText value="#{usuarioBean.apellido}"/></li>
+            <li>Cedula:<h:inputText value="#{usuarioBean.cedula}"/></li>
+            <li>Fecha Nacimiento:<h:inputText value="#{usuarioBean.fechaNacimiento}"/></li>
         </ul>
+            <h:commandButton value="Add"  action="#{usuarioBean.add()}"/>
         </h:form>
-        <h:commandButton value="Add"  action="#{usuarioBean.add()}"/>
+        
             <div>TODO write content</div>
     </h:body>
 </html>

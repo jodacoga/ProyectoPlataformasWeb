@@ -31,6 +31,7 @@ public class TipoUsuario {
     private Set<Usuario> usuarios = new HashSet<Usuario>();
 
     public TipoUsuario() {
+    descripcion = "Administrador";
     }
 
     public TipoUsuario(String descripcion) {
