@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Usuario</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h3>Ingresar Datos</h3>
+        <h:form>
+        <ul>
+            <li>Nombre:<h:inputText size="10" value="#{usuarioBean.nombre}"/> </li>
+            <li>Apellido:<h:inputText size="10" value="#{usuarioBean.apellido}"/></li>
+            <li>Cedula:<h:inputText size="10" value="#{usuarioBean.cedula}"/></li>
+            <li>Fecha Nacimiento:<h:inputText size="10" value="#{usuarioBean.fechaNacimiento}"/></li>
+            
+        </ul>
+        </h:form>
+        <h:commandButton value="Add"  action="#{usuarioBean.add()}"/>
+            <div>TODO write content</div>
+    </h:body>
+</html>
