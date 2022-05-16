@@ -14,8 +14,8 @@ import jakarta.persistence.PersistenceContext;
  * @author johan
  */
 @Stateless
-public class TipoUsuarioFacade extends AbstractFacade<TipoUsuario>{
-    
+public class TipoUsuarioFacade extends AbstractFacade<TipoUsuario> {
+
     @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
 
@@ -25,11 +25,7 @@ public class TipoUsuarioFacade extends AbstractFacade<TipoUsuario>{
 
     @Override
     protected EntityManager getEntityManager() {
-return em;
+        return em;
     }
-    
-    
-    
-    
-    
+
 }

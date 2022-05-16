@@ -57,14 +57,11 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento, TipoUsuario tipoUsuario, Sucursal sucursalUsuario, Cuenta cuenta) {
+    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.fechaNacimiento = fechaNacimiento;
-        this.tipoUsuario = tipoUsuario;
-        this.sucursalUsuario = sucursalUsuario;
-        this.cuenta = cuenta;
     }
 
 
