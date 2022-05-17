@@ -16,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class Usuario implements Serializable {
     @Column(unique=true)
     private String cedula;
     
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     
     @ManyToOne
     @JoinColumn
@@ -57,12 +58,14 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String apellido, String cedula, Date fechaNacimiento) {
+    public Usuario(String nombre, String apellido, String cedula) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = java.time.LocalDate.now();
     }
+
+
 
 
 
@@ -102,14 +105,15 @@ public class Usuario implements Serializable {
         this.cedula = cedula;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+   
     public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
