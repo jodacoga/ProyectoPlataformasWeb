@@ -8,14 +8,16 @@ import ec.edu.ups.entidades.Usuario;
 import ec.edu.ups.facade.UsuarioFacade;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
  * @author johan
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
 @SessionScoped
 public class UsuarioBean implements Serializable {
@@ -28,10 +30,11 @@ public class UsuarioBean implements Serializable {
     private String nombre;
     private String apellido;
     private String cedula;
-    private Date fechaNacimiento;
-    
+    private LocalDate fechaNacimiento;
+   
     public String add(){
-        usuarioFacade.create(new Usuario(nombre, apellido, cedula, fechaNacimiento));
+        usuarioFacade.create(new Usuario(nombre, apellido, cedula));
+        fechaNacimiento = java.time.LocalDate.now();
         return null;
     }
 
@@ -67,13 +70,15 @@ public class UsuarioBean implements Serializable {
         this.cedula = cedula;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+
+  
     
     
 }

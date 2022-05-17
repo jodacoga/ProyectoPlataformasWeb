@@ -23,15 +23,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         <f:validateRequired />
                     </h:inputText>
 
-                </div>
-
-                <li>Apellido:<h:outputText value="h:inputText:" />
-                    <h:inputText id="apellido" value="#{usuarioBean.apellido}"/></li>
-
-                <li>Cedula:<h:inputText id="Cedula" value="#{usuarioBean.cedula}"/></li>
-
-                <li>Fecha Nacimiento:<h:inputText id="fecha" value="#{usuarioBean.fechaNacimiento}"/></li>
-            </ul>
+            <li><h:outputText value="Nombre" />       
+                <h:inputText id="nombre" value="#{usuarioBean.nombre}"/> </li>
+            
+            <li><h:outputText value="Apellido" />
+                <h:inputText id="apellido" value="#{usuarioBean.apellido}"/></li>
+       
+            <li><h:outputText value="Cedula" />
+                <h:inputText id="Cedula" value="#{usuarioBean.cedula}"/></li>
+            
+           
+        </ul>
             <h:commandButton value="Add"  action="#{usuarioBean.add()}"/>
         </h:form>
 
