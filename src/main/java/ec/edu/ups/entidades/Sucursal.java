@@ -32,8 +32,6 @@ public class Sucursal implements Serializable{
     private double latencia;
     private double longitud;
     
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursalUsuario")
-    private Set<Usuario> usuario = new HashSet<Usuario>();
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursal")
     private Set<Pedido> pedido = new HashSet<Pedido>();
@@ -83,13 +81,6 @@ public class Sucursal implements Serializable{
         this.longitud = longitud;
     }
 
-    public Set<Usuario> getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Set<Usuario> usuario) {
-        this.usuario = usuario;
-    }
 
     public Set<Pedido> getPedido() {
         return pedido;
@@ -117,8 +108,10 @@ public class Sucursal implements Serializable{
 
     @Override
     public String toString() {
-        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", doreccion=" + doreccion + ", latencia=" + latencia + ", longitud=" + longitud + ", usuario=" + usuario + ", pedido=" + pedido + ", categoriaSucursal=" + categoriaSucursal + '}';
+        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", doreccion=" + doreccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + ", categoriaSucursal=" + categoriaSucursal + '}';
     }
+
+ 
 
     
     
