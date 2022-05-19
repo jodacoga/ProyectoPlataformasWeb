@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,6 +33,8 @@ public class CategoriaSucursal implements Serializable {
     private int codigoCategoria;
     private String nombre;
     private String descripcion;
+    @Transient
+    private boolean editable;
 
     @ManyToOne
     @JoinColumn
@@ -87,6 +90,14 @@ public class CategoriaSucursal implements Serializable {
 
     public void setProducto(List<Producto> producto) {
         this.producto = producto;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     @Override

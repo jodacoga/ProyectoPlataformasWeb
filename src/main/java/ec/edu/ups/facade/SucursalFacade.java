@@ -41,5 +41,7 @@ public class SucursalFacade extends AbstractFacade<Sucursal> {
 
         return res;
     }
+     
+
 
 }

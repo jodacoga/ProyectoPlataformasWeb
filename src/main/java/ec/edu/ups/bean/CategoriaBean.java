@@ -8,6 +8,7 @@ import ec.edu.ups.entidades.CategoriaSucursal;
 import ec.edu.ups.entidades.Sucursal;
 import ec.edu.ups.facade.CategoriaFacade;
 import ec.edu.ups.facade.SucursalFacade;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
@@ -24,9 +25,9 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CategoriaBean implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @EJB
     private CategoriaFacade categoriaFacade;
     @EJB
@@ -36,64 +37,85 @@ public class CategoriaBean implements Serializable {
     private String descripcion;
     private String nombreSucursal;
     List<String> list = new ArrayList<>();
-    
+    List<CategoriaSucursal> categorias = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
+        categorias = categoriaFacade.findAll();
+    }
+
     public String add() throws Exception {
         categoriaFacade.guardarCategoria(nombre, descripcion, nombreSucursal);
+        categorias = categoriaFacade.findAll();
         return null;
     }
-    
+
     public String delete(CategoriaSucursal cs) {
         categoriaFacade.remove(cs);
         //list = sucursalFacade.findAll();
         return null;
     }
-    
-    public String edit(CategoriaSucursal cs) {
-        categoriaFacade.edit(cs);
-        //list = sucursalFacade.findAll();
+
+    public String edit(CategoriaSucursal c) {
+        c.setEditable(true);
         return null;
     }
-    
+
+    public String save(CategoriaSucursal p) {
+        categoriaFacade.edit(p);
+        categorias = categoriaFacade.findAll();
+        p.setEditable(false);
+        return null;
+    }
+
     public List<String> getlistaSucursal() {
-        
+
         list = sucursalFacade.getSucursalNames();
         return list;
     }
-    
+
     public CategoriaFacade getCategoriaFacade() {
         return categoriaFacade;
     }
-    
+
     public void setCategoriaFacade(CategoriaFacade categoriaFacade) {
         this.categoriaFacade = categoriaFacade;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public String getDescripcion() {
         return descripcion;
     }
-    
+
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
     public String getNombreSucursal() {
         return nombreSucursal;
     }
-    
+
     public void setNombreSucursal(String nombreSucursal) {
         this.nombreSucursal = nombreSucursal;
     }
-    
-    public String nombreSucursal(Sucursal su){
-        String nombreSu = sucursalFacade.getSucursalByName(su);
+
+  
+
+    public List<CategoriaSucursal> getCategorias() {
+        return categorias;
     }
+
+    public void setCategorias(List<CategoriaSucursal> categorias) {
+        this.categorias = categorias;
+    }
+
+    
     
 }
