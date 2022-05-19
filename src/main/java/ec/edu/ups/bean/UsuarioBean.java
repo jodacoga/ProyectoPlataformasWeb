@@ -4,14 +4,19 @@
  */
 package ec.edu.ups.bean;
 
+import ec.edu.ups.entidades.TipoUsuario;
 import ec.edu.ups.entidades.Usuario;
+import ec.edu.ups.facade.TipoUsuarioFacade;
 import ec.edu.ups.facade.UsuarioFacade;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -23,20 +28,44 @@ import java.time.LocalDate;
 public class UsuarioBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @EJB
     private UsuarioFacade usuarioFacade;
-    
+
+    @EJB
+    private TipoUsuarioFacade tipoUsuarioFacade;
+
     private String nombre;
     private String apellido;
     private String cedula;
     private LocalDate fechaNacimiento;
-   
-    public String add(){
-        usuarioFacade.create(new Usuario(nombre, apellido, cedula));
+    private String tipo;
+     List<String> list = new ArrayList<>();
+
+    @PostConstruct
+    public void init() {
+       
+
+        
+    }
+
+    public UsuarioBean() {
+       
+    }
+
+    public String add() throws Exception {
+        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo);
         fechaNacimiento = java.time.LocalDate.now();
         return null;
     }
+       
+    public List<String> getlistaTipo() {
+        
+        list = tipoUsuarioFacade.getTipoDescripcion();
+        
+        return list;
+    }
+    
 
     public UsuarioFacade getUsuarioFacade() {
         return usuarioFacade;
@@ -78,7 +107,4 @@ public class UsuarioBean implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-  
-    
-    
 }

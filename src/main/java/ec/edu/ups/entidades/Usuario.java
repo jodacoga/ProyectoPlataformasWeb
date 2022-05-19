@@ -17,7 +17,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -46,7 +48,7 @@ public class Usuario implements Serializable {
     private Cuenta cuenta;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura")
-    private Set<Factura> facturaUsuario = new HashSet<Factura>();
+    private List<Factura> facturaUsuario = new ArrayList<Factura>();
 
     public Usuario() {
     }
@@ -106,13 +108,15 @@ public class Usuario implements Serializable {
         this.cuenta = cuenta;
     }
 
-    public Set<Factura> getFacturaUsuario() {
+    public List<Factura> getFacturaUsuario() {
         return facturaUsuario;
     }
 
-    public void setFacturaUsuario(Set<Factura> facturaUsuario) {
+    public void setFacturaUsuario(List<Factura> facturaUsuario) {
         this.facturaUsuario = facturaUsuario;
     }
+
+  
 
     @Override
     public String toString() {
