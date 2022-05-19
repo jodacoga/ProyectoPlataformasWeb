@@ -34,11 +34,12 @@ public class SucursalBean implements Serializable {
     private double latencia;
     private double longitud;
 
-    /*@PostConstruct
+    @PostConstruct
     public void init() {
         list = sucursalFacade.findAll();
+
     }
-     */
+     
     public String add() {
         sucursalFacade.create(new Sucursal(nombre, direccion, latencia, longitud));
         return null;

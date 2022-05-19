@@ -7,11 +7,14 @@ package ec.edu.ups.bean;
 import ec.edu.ups.entidades.CategoriaSucursal;
 import ec.edu.ups.entidades.Sucursal;
 import ec.edu.ups.facade.CategoriaFacade;
+import ec.edu.ups.facade.SucursalFacade;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,10 +29,13 @@ public class CategoriaBean implements Serializable {
 
     @EJB
     private CategoriaFacade categoriaFacade;
+    @EJB
+    private SucursalFacade sucursalFacade;
 
     private String nombre;
     private String descripcion;
     private Sucursal sucursal;
+    List<Sucursal> list = new ArrayList<>();
 
     public String add() {
         categoriaFacade.create(new CategoriaSucursal(nombre, descripcion, sucursal));
@@ -46,6 +52,12 @@ public class CategoriaBean implements Serializable {
         categoriaFacade.edit(cs);
         //list = sucursalFacade.findAll();
         return null;
+    }
+
+    public List<Sucursal> getlistaSucursal() {
+
+        list = sucursalFacade.findAll();
+        return list;
     }
 
     public CategoriaFacade getCategoriaFacade() {
