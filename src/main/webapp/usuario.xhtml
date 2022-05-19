@@ -15,21 +15,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         <h3>Ingresar Datos</h3>
         <h:form>
             <ul>
-                <div class="form-group">
-                    <label for="cedula">Cedula:</label>
-                    <h:inputText class="form-control" id="cedula"
-                                 value="#{usuarioBean.cedula}"
-                                 requiredMessage="Este campo es requerido">
-                        <f:validateRequired />
-                    </h:inputText>
-
+              
             <li><h:outputText value="Nombre" />       
                 <h:inputText id="nombre" value="#{usuarioBean.nombre}"/> </li>
             
             <li><h:outputText value="Apellido" />
                 <h:inputText id="apellido" value="#{usuarioBean.apellido}"/></li>
        
-                </div>
+            <li><h:outputText value="Cedula" />
+                <h:inputText id="Cedula" value="#{usuarioBean.cedula}"/></li>
+
+               
         </ul>
             <h:commandButton value="Add"  action="#{usuarioBean.add()}"/>
         </h:form>
