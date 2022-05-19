@@ -13,7 +13,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -36,7 +38,7 @@ public class CategoriaSucursal implements Serializable {
     private Sucursal sucursalCategoria;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
-    private Set<Producto> producto = new HashSet<Producto>();
+    private List<Producto> producto = new ArrayList<Producto>();
 
     public CategoriaSucursal() {
     }
@@ -79,11 +81,11 @@ public class CategoriaSucursal implements Serializable {
         this.sucursalCategoria = sucursalCategoria;
     }
 
-    public Set<Producto> getProducto() {
+    public List<Producto> getProducto() {
         return producto;
     }
 
-    public void setProducto(Set<Producto> producto) {
+    public void setProducto(List<Producto> producto) {
         this.producto = producto;
     }
 

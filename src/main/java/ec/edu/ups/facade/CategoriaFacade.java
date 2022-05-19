@@ -6,7 +6,6 @@ package ec.edu.ups.facade;
 
 import ec.edu.ups.entidades.CategoriaSucursal;
 import ec.edu.ups.entidades.Sucursal;
-import ec.edu.ups.entidades.Usuario;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -49,4 +48,17 @@ public class CategoriaFacade extends AbstractFacade<CategoriaSucursal> {
         sucursal.setCategoriaSucursal(categoriaSucursals);
         facade.edit(sucursal);
     }
+    
+    public CategoriaSucursal getCategoriaByName(String name) {
+        String jpql = "SELECT s FROM CategoriaSucursal s WHERE s.nombre = '" + name+"'";
+        CategoriaSucursal catSucursal = (CategoriaSucursal) em.createQuery(jpql).getSingleResult();
+        return catSucursal;
+    }
+
+    public List<String> getCategoriaNames() {
+        String jpql = "SELECT u.nombre FROM CategoriaSucursal u ";
+        List<String> res = em.createQuery(jpql).getResultList();
+        return res;
+    }
+    
 }

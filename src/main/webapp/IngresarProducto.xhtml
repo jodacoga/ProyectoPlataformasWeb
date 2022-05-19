@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sucursal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h3>Ingresar Datos Producto</h3>
+        <h:form>
+            <ul>
+
+                <li><h:outputText value="Nombre" />       
+                    <h:inputText id="nombre" value="#{productoBean.nombre}"/> </li>
+
+                <li><h:outputText value="Descripcion" />
+                    <h:inputText id="descripcion" value="#{productoBean.descripcion}"/></li>
+
+                <li><h:outputText value="Precio" />
+                    <h:inputText id="precio" value="#{productoBean.precio}"/></li>
+
+                <li><h:outputText value="Stock" />
+                    <h:inputText id="stock" value="#{productoBean.stock}"/></li>
+                
+                <h:outputLabel value="Seleccione Categoria: "/>
+                <h:selectOneMenu value="#{productoBean.nombreProducto}">
+                    <f:selectItems value="#{productoBean.listaProducto}" />
+                </h:selectOneMenu> 
+
+            </ul>
+            <h:commandButton value="Insertar Sucursal"  action="#{productoBean.add()}"/>
+        </h:form>
+
+    </h:body>
+</html>
+

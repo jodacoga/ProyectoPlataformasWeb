@@ -23,14 +23,14 @@ public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigoProducto;
     
      private String nombre;
      private String descripcion;
      private double precio;
-     private byte imagen;
+     //private byte imagen;
      private int stock;
      
      @ManyToOne
@@ -40,11 +40,11 @@ public class Producto implements Serializable {
      @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
      private DetalleFactura detalleFactura;
      
-    public Producto(String nombre, String descripcion, double precio, byte imagen, int stock, CategoriaSucursal categoria) {
+    public Producto(String nombre, String descripcion, double precio, int stock, CategoriaSucursal categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.imagen = imagen;
+        //this.imagen = imagen;
         this.stock = stock;
         this.categoria = categoria;
     }
@@ -83,7 +83,7 @@ public class Producto implements Serializable {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
+/**
     public byte getImagen() {
         return imagen;
     }
@@ -91,7 +91,7 @@ public class Producto implements Serializable {
     public void setImagen(byte imagen) {
         this.imagen = imagen;
     }
-
+**/
     public int getStock() {
         return stock;
     }
@@ -118,7 +118,11 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto{" + "codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", imagen=" + imagen + ", stock=" + stock + ", categoria=" + categoria + ", detalleFactura=" + detalleFactura + '}';
+        String u = ",Categoria==(null)";
+        if (this.categoria != null) {
+            u = ", Categoria=(" + this.categoria.getCodigoCategoria()+ ")";
+        }
+        return "Producto{" + "codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + u + ", detalleFactura=" + detalleFactura + '}';
     }
      
      
