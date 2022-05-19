@@ -21,26 +21,26 @@ import java.util.Set;
  * @author johan
  */
 @Entity
-public class CategoriaSucursal implements Serializable{
-    
+public class CategoriaSucursal implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int codigoCategoria;  
+    private int codigoCategoria;
     private String nombre;
     private String descripcion;
-    
+
     @ManyToOne
     @JoinColumn
     private Sucursal sucursalCategoria;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
     private Set<Producto> producto = new HashSet<Producto>();
+
     public CategoriaSucursal() {
     }
 
-       
     public CategoriaSucursal(String nombre, String descripcion, Sucursal sucursalCategoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -89,9 +89,15 @@ public class CategoriaSucursal implements Serializable{
 
     @Override
     public String toString() {
-        return "CategoriaSucursal{" + "codigoCategoria=" + codigoCategoria + ", nombre=" + nombre + ", descripcion=" + descripcion + ", sucursalCategoria=" + sucursalCategoria + ", producto=" + producto + '}';
+        String u = ",sucursalCategoria==(null)";
+        if (this.sucursalCategoria != null) {
+            u = ", sucursalCategoria=(" + this.sucursalCategoria.getCodigo() + ")";
+        }
+        String d = ", producto=(null)";
+        if (this.producto != null) {
+            d = ", producto=" + this.producto.toString() + ")";
+        }
+        return "CategoriaSucursal{" + "codigoCategoria=" + codigoCategoria + ", nombre=" + nombre + ", descripcion=" + descripcion + u + d + '}';
     }
-    
-    
-    
+
 }

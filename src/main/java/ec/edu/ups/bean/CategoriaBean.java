@@ -24,72 +24,72 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CategoriaBean implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
-
+    
     @EJB
     private CategoriaFacade categoriaFacade;
     @EJB
     private SucursalFacade sucursalFacade;
-
+    
     private String nombre;
     private String descripcion;
-    private Sucursal sucursal;
-    List<Sucursal> list = new ArrayList<>();
-
-    public String add() {
-        categoriaFacade.create(new CategoriaSucursal(nombre, descripcion, sucursal));
+    private String nombreSucursal;
+    List<String> list = new ArrayList<>();
+    
+    public String add() throws Exception {
+        categoriaFacade.guardarCategoria(nombre, descripcion, nombreSucursal);
         return null;
     }
-
+    
     public String delete(CategoriaSucursal cs) {
         categoriaFacade.remove(cs);
         //list = sucursalFacade.findAll();
         return null;
     }
-
+    
     public String edit(CategoriaSucursal cs) {
         categoriaFacade.edit(cs);
         //list = sucursalFacade.findAll();
         return null;
     }
-
-    public List<Sucursal> getlistaSucursal() {
-
-        list = sucursalFacade.findAll();
+    
+    public List<String> getlistaSucursal() {
+        
+        list = sucursalFacade.getSucursalNames();
         return list;
     }
-
+    
     public CategoriaFacade getCategoriaFacade() {
         return categoriaFacade;
     }
-
+    
     public void setCategoriaFacade(CategoriaFacade categoriaFacade) {
         this.categoriaFacade = categoriaFacade;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
-
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    
     public String getDescripcion() {
         return descripcion;
     }
-
+    
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public Sucursal getSucursal() {
-        return sucursal;
+    
+    public String getNombreSucursal() {
+        return nombreSucursal;
     }
-
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
+    
+    public void setNombreSucursal(String nombreSucursal) {
+        this.nombreSucursal = nombreSucursal;
     }
-
+    
 }

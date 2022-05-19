@@ -11,8 +11,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -33,10 +34,10 @@ public class Sucursal implements Serializable{
     private double longitud;
     
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursal")
-    private Set<Pedido> pedido = new HashSet<Pedido>();
+    private List<Pedido> pedido = new ArrayList<Pedido>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursalCategoria")
-    private Set<CategoriaSucursal> categoriaSucursal = new HashSet<CategoriaSucursal>();
+    private List<CategoriaSucursal> categoriaSucursal = new ArrayList<CategoriaSucursal>();
 
     public Sucursal() {
     }
@@ -81,14 +82,7 @@ public class Sucursal implements Serializable{
     }
 
 
-    public Set<Pedido> getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Set<Pedido> pedido) {
-        this.pedido = pedido;
-    }
-
+   
     public int getCodigo() {
         return codigo;
     }
@@ -97,17 +91,31 @@ public class Sucursal implements Serializable{
         this.codigo = codigo;
     }
 
-    public Set<CategoriaSucursal> getCategoriaSucursal() {
+    public List<Pedido> getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(List<Pedido> pedido) {
+        this.pedido = pedido;
+    }
+
+    public List<CategoriaSucursal> getCategoriaSucursal() {
         return categoriaSucursal;
     }
 
-    public void setCategoriaSucursal(Set<CategoriaSucursal> categoriaSucursal) {
+    public void setCategoriaSucursal(List<CategoriaSucursal> categoriaSucursal) {
         this.categoriaSucursal = categoriaSucursal;
     }
 
+   
+
     @Override
     public String toString() {
-        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + ", categoriaSucursal=" + categoriaSucursal + '}';
+        String d = ", categoriaSucursal=(null)";
+        if (this.categoriaSucursal != null) {
+            d = ", categoriaSucursal=" + this.categoriaSucursal.toString() + ")";
+        }
+        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + d+ '}';
     }
 
  
