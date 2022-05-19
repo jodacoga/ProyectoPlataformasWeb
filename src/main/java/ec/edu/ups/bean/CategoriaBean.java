@@ -5,6 +5,8 @@
 package ec.edu.ups.bean;
 
 import ec.edu.ups.entidades.Sucursal;
+import ec.edu.ups.facade.CategoriaFacade;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
@@ -21,9 +23,13 @@ public class CategoriaBean implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
+    @EJB
+    private CategoriaFacade categoriaFacade;
+    
     private String nombre;
     private String descripcion;
-    
+    private Sucursal sucursal;
+
     public String add(){
         
         return null;
