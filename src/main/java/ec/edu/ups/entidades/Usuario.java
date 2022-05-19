@@ -44,9 +44,6 @@ public class Usuario implements Serializable {
     @JoinColumn
     private TipoUsuario tipoUsuario;
     
-    @ManyToOne
-    @JoinColumn
-    private Sucursal sucursalUsuario;
     
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Cuenta cuenta;
@@ -122,13 +119,7 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Sucursal getSucursalUsuario() {
-        return sucursalUsuario;
-    }
-
-    public void setSucursalUsuario(Sucursal sucursalUsuario) {
-        this.sucursalUsuario = sucursalUsuario;
-    }
+   
 
 
     public Cuenta getCuenta() {
@@ -147,13 +138,15 @@ public class Usuario implements Serializable {
         this.facturaUsuario = facturaUsuario;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + ", cuenta=" + cuenta + ", facturaUsuario=" + facturaUsuario + '}';
+    }
+
     
     
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + ", sucursalUsuario=" + sucursalUsuario + ", cuenta=" + cuenta + '}';
-    }
+  
 
    
 
