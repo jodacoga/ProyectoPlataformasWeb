@@ -7,6 +7,7 @@ package ec.edu.ups.bean;
 import ec.edu.ups.entidades.Producto;
 import ec.edu.ups.facade.CategoriaFacade;
 import ec.edu.ups.facade.ProductoFacade;
+import jakarta.annotation.PostConstruct;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
@@ -37,9 +38,16 @@ public class ProductoBean implements Serializable {
     private int stock;
     private String nombreCategoria;
     List<String> list = new ArrayList<>();
+    List<Producto> productos = new ArrayList<>();
+    
+    @PostConstruct
+    public void init() {
+        productos = productoFacade.findAll();
+    }
     
     public String add() throws Exception {
         productoFacade.guardarProducto(nombre, descripcion, precio, stock, nombreCategoria);
+        productos= productoFacade.findAll();
         return null;
     }
     
@@ -49,10 +57,16 @@ public class ProductoBean implements Serializable {
         return null;
     }
     
-    public String edit(Producto pro) {
-        productoFacade.edit(pro);
-        //list = sucursalFacade.findAll();
-        return null;
+    public String edit(Producto p) {
+	p.setEditable(true);
+	return null;
+    }
+
+    public String save(Producto p) {
+        productoFacade.edit(p);
+        productos= productoFacade.findAll();
+	p.setEditable(false);
+	return null;
     }
 
     public List<String> getListaCategoria(){
@@ -98,6 +112,14 @@ public class ProductoBean implements Serializable {
 
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
     
     

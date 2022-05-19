@@ -92,4 +92,8 @@ public class CategoriaBean implements Serializable {
         this.nombreSucursal = nombreSucursal;
     }
     
+    public String nombreSucursal(Sucursal su){
+        String nombreSu = sucursalFacade.getSucursalByName(su);
+    }
+    
 }

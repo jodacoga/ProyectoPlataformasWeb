@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import java.io.Serializable;
 
 /**
@@ -32,6 +33,8 @@ public class Producto implements Serializable {
      private double precio;
      //private byte imagen;
      private int stock;
+     @Transient
+     private boolean editable;
      
      @ManyToOne
      @JoinColumn
@@ -115,6 +118,16 @@ public class Producto implements Serializable {
     public void setDetalleFactura(DetalleFactura detalleFactura) {
         this.detalleFactura = detalleFactura;
     }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+    
+    
 
     @Override
     public String toString() {
