@@ -40,23 +40,41 @@ public class UsuarioBean implements Serializable {
     private String cedula;
     private LocalDate fechaNacimiento;
     private String tipo;
-     List<String> list = new ArrayList<>();
+    List<String> list = new ArrayList<>();
+    List<Usuario> usuarios = new ArrayList<>();
+    
+     @PostConstruct
+    public void init() {
+        usuarios = usuarioFacade.findAll();
 
-
+    }
 
     public String add() throws Exception {
         fechaNacimiento = java.time.LocalDate.now();
-        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo); 
+        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo);
+        usuarios = usuarioFacade.findAll();
         return null;
     }
-       
+
+       public String edit(Usuario u) {
+        u.setEditable(true);
+        return null;
+    }
+
+    public String save(Usuario u) {
+        usuarioFacade.edit(u);
+        usuarios = usuarioFacade.findAll();
+        u.setEditable(false);
+        return null;
+    }
+
+   
     public List<String> getlistaTipo() {
-        
+
         list = tipoUsuarioFacade.getTipoDescripcion();
-        
+
         return list;
     }
-    
 
     public UsuarioFacade getUsuarioFacade() {
         return usuarioFacade;
@@ -106,5 +124,13 @@ public class UsuarioBean implements Serializable {
         this.tipo = tipo;
     }
 
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
     
+
 }

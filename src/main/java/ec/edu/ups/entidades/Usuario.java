@@ -16,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -34,11 +35,14 @@ public class Usuario implements Serializable {
     @Id
     @Column(unique = true)
     private String cedula;
-    
+
     private String nombre;
     private String apellido;
 
     private LocalDate fechaNacimiento;
+
+    @Transient
+    private boolean editable;
 
     @ManyToOne
     @JoinColumn
@@ -116,8 +120,15 @@ public class Usuario implements Serializable {
         this.facturaUsuario = facturaUsuario;
     }
 
-  
+    public boolean isEditable() {
+        return editable;
+    }
 
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
+    
     @Override
     public String toString() {
         String u = ",tipoUsuario==(null)";
