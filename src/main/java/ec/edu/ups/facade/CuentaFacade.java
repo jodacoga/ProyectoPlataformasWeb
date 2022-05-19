@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ec.edu.ups.facade;
 
 import ec.edu.ups.entidades.Cuenta;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -18,6 +15,15 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
 
     @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
+
+    public List<String> getUsersCedula(String cedula2) {
+
+        String jpql1 = "SELECT u.codigo FROM usuario u where u.cedula=cedula2";
+        List<String> res = em.createQuery(jpql1).getResultList();
+
+        return res;
+
+    }
 
     public CuentaFacade() {
         super(Cuenta.class);

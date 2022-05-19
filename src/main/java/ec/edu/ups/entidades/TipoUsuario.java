@@ -10,7 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,24 +30,28 @@ public class TipoUsuario {
     private String descripcion;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuario")
-    private Set<Usuario> usuarios = new HashSet<Usuario>();
+    private List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public TipoUsuario() {
-    descripcion = "Administrador";
     }
+
+
+
+    
 
     public TipoUsuario(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public Set<Usuario> getUsuarios() {
+    public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public void setUsuarios(Set<Usuario> usuarios) {
+    public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
 
+ 
     public String getDescripcion() {
         return descripcion;
     }
@@ -54,10 +60,24 @@ public class TipoUsuario {
         this.descripcion = descripcion;
     }
 
+   
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
     @Override
     public String toString() {
-        return "TipoUsuario{" + "descripcion=" + descripcion + ", usuarios=" + usuarios + '}';
+        String d = ", usuarios=(null)";
+        if (this.usuarios != null) {
+            d = ", usuarios=" + this.usuarios.toString() + ")";
+        }
+        return "TipoUsuario{" + "idTipo=" + idTipo + ", descripcion=" + descripcion +d+ '}';
     }
+    
 
     @Override
     public int hashCode() {
