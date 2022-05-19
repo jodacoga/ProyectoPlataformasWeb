@@ -44,7 +44,7 @@ public class CuentaBean implements Serializable{
 //        }
         
         public String addCuenta(){
-            facadeCuenta.create(new Cuenta(correo, contrasena, cedula));
+//            facadeCuenta.create(new Cuenta(correo, contrasena, cedula));
             return null;
         }
 
