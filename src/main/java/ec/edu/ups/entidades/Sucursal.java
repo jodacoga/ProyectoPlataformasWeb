@@ -28,7 +28,7 @@ public class Sucursal implements Serializable{
     private int codigo;
     
     private String nombre;
-    private String doreccion;
+    private String direccion;
     private double latencia;
     private double longitud;
     
@@ -41,9 +41,9 @@ public class Sucursal implements Serializable{
     public Sucursal() {
     }
 
-    public Sucursal(String nombre, String doreccion, double latencia, double longitud) {
+    public Sucursal(String nombre, String direccion, double latencia, double longitud) {
         this.nombre = nombre;
-        this.doreccion = doreccion;
+        this.direccion = direccion;
         this.latencia = latencia;
         this.longitud = longitud;
     }
@@ -56,12 +56,12 @@ public class Sucursal implements Serializable{
         this.nombre = nombre;
     }
 
-    public String getDoreccion() {
-        return doreccion;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setDoreccion(String doreccion) {
-        this.doreccion = doreccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public double getLatencia() {
@@ -107,7 +107,7 @@ public class Sucursal implements Serializable{
 
     @Override
     public String toString() {
-        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", doreccion=" + doreccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + ", categoriaSucursal=" + categoriaSucursal + '}';
+        return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", doreccion=" + direccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + ", categoriaSucursal=" + categoriaSucursal + '}';
     }
 
  

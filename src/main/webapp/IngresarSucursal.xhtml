@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Sucursal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h3>Ingresar Datos Sucursal</h3>
+        <h:form>
+            <ul>
+
+                <li><h:outputText value="Nombre" />       
+                    <h:inputText id="nombre" value="#{sucursalBean.nombre}"/> </li>
+
+                <li><h:outputText value="Direccion" />
+                    <h:inputText id="direccion" value="#{sucursalBean.direccion}"/></li>
+
+                <li><h:outputText value="Latencia" />
+                    <h:inputText id="latencia" value="#{sucursalBean.latencia}"/></li>
+
+                <li><h:outputText value="Longitud" />
+                    <h:inputText id="longitud" value="#{sucursalBean.longitud}"/></li>    
+
+
+            </ul>
+            <h:commandButton value="Insertar Sucursal"  action="#{sucursalBean.add()}"/>
+        </h:form>
+
+
+    </h:body>
+</html>
+

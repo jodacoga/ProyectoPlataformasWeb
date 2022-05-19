@@ -27,8 +27,7 @@ public class CategoriaSucursal implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int codigoCategoria;
-    
+    private int codigoCategoria;  
     private String nombre;
     private String descripcion;
     

@@ -6,6 +6,7 @@ package ec.edu.ups.bean;
 
 import ec.edu.ups.entidades.Sucursal;
 import ec.edu.ups.facade.SucursalFacade;
+
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
@@ -22,10 +23,9 @@ import java.util.List;
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
 @SessionScoped
-public class SucursalBean implements Serializable{
-    
+public class SucursalBean implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
     @EJB
     private SucursalFacade sucursalFacade;
     private List<Sucursal> list = new ArrayList<>();
@@ -33,27 +33,27 @@ public class SucursalBean implements Serializable{
     private String direccion;
     private double latencia;
     private double longitud;
-    
-    @PostConstruct
-    public void init() {	
-	list = sucursalFacade.findAll();
+
+    /*@PostConstruct
+    public void init() {
+        list = sucursalFacade.findAll();
     }
-    
-    public String add(){
+     */
+    public String add() {
         sucursalFacade.create(new Sucursal(nombre, direccion, latencia, longitud));
         return null;
     }
-    
-     public String delete(Sucursal su) {
-	sucursalFacade.remove(su);
+
+    public String delete(Sucursal su) {
+        sucursalFacade.remove(su);
         list = sucursalFacade.findAll();
-	return null;
+        return null;
     }
 
     public String edit(Sucursal su) {
-	sucursalFacade.edit(su);
+        sucursalFacade.edit(su);
         list = sucursalFacade.findAll();
-	return null;
+        return null;
     }
 
     public SucursalFacade getSucursalFacade() {
@@ -95,6 +95,5 @@ public class SucursalBean implements Serializable{
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
-    
-    
+
 }
