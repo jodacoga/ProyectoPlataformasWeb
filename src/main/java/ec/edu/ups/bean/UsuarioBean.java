@@ -42,20 +42,11 @@ public class UsuarioBean implements Serializable {
     private String tipo;
      List<String> list = new ArrayList<>();
 
-    @PostConstruct
-    public void init() {
-       
 
-        
-    }
-
-    public UsuarioBean() {
-       
-    }
 
     public String add() throws Exception {
-        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo);
         fechaNacimiento = java.time.LocalDate.now();
+        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo); 
         return null;
     }
        
@@ -107,4 +98,13 @@ public class UsuarioBean implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
 }

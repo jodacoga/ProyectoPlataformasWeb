@@ -120,7 +120,15 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + ", cuenta=" + cuenta + ", facturaUsuario=" + facturaUsuario + '}';
+        String u = ",tipoUsuario==(null)";
+        if (this.tipoUsuario != null) {
+            u = ", tipoUsuario=(" + this.tipoUsuario.getIdTipo() + ")";
+        }
+        String d = ", facturaUsuario=(null)";
+        if (this.facturaUsuario != null) {
+            d = ", facturaUsuario=" + this.facturaUsuario.toString() + ")";
+        }
+        return "Usuario{" + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + u + ", cuenta=" + cuenta + d + '}';
     }
 
 }

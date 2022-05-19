@@ -60,10 +60,24 @@ public class TipoUsuario {
         this.descripcion = descripcion;
     }
 
+   
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
     @Override
     public String toString() {
-        return "TipoUsuario{" + "descripcion=" + descripcion + ", usuarios=" + usuarios + '}';
+        String d = ", usuarios=(null)";
+        if (this.usuarios != null) {
+            d = ", usuarios=" + this.usuarios.toString() + ")";
+        }
+        return "TipoUsuario{" + "idTipo=" + idTipo + ", descripcion=" + descripcion +d+ '}';
     }
+    
 
     @Override
     public int hashCode() {
