@@ -28,11 +28,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             
             <li><h:outputText value="Apellido" />
                 <h:inputText id="apellido" value="#{usuarioBean.apellido}"/></li>
-       
+                 
+                
+                <h:outputLabel value="Seleccione Tipo Usuario "/>
+                <h:selectOneMenu value="#{usuarioBean.tipo}">
+                    <f:selectItems value="#{usuarioBean.listaTipo}" />
+                </h:selectOneMenu> 
                 </div>
         </ul>
             <h:commandButton value="Add"  action="#{usuarioBean.add()}"/>
         </h:form>
+        <a href="login.xhtml" >Login</a>
 
         <div>TODO write content</div>
     </h:body>
