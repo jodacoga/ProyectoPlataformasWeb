@@ -28,30 +28,26 @@ import java.util.Set;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int codigo;
-    private String nombre;
-    private String apellido;
-    
-    @Column(unique=true)
+    @Column(unique = true)
     private String cedula;
     
+    private String nombre;
+    private String apellido;
+
     private LocalDate fechaNacimiento;
-    
+
     @ManyToOne
     @JoinColumn
     private TipoUsuario tipoUsuario;
-    
-    
+
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Cuenta cuenta;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFactura")
     private Set<Factura> facturaUsuario = new HashSet<Factura>();
-    
-    
+
     public Usuario() {
     }
 
@@ -60,22 +56,6 @@ public class Usuario implements Serializable {
         this.apellido = apellido;
         this.cedula = cedula;
         this.fechaNacimiento = java.time.LocalDate.now();
-    }
-
-
-
-
-
-    
-
-
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -110,7 +90,6 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-   
     public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
@@ -118,9 +97,6 @@ public class Usuario implements Serializable {
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
-
-   
-
 
     public Cuenta getCuenta() {
         return cuenta;
@@ -140,25 +116,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + ", cuenta=" + cuenta + ", facturaUsuario=" + facturaUsuario + '}';
+        return "Usuario{" + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento=" + fechaNacimiento + ", tipoUsuario=" + tipoUsuario + ", cuenta=" + cuenta + ", facturaUsuario=" + facturaUsuario + '}';
     }
 
-    
-    
-
-  
-
-   
-
-    
-    
-    
-    
-    
-
-     
-
-
-
-   
 }

@@ -27,6 +27,7 @@ public class Cuenta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigoCuenta;
+    
     private String correo;
     private String contrasena;
 
