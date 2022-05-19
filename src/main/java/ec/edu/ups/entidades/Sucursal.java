@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,9 @@ public class Sucursal implements Serializable{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursalCategoria")
     private List<CategoriaSucursal> categoriaSucursal = new ArrayList<CategoriaSucursal>();
 
+    @Transient
+    private boolean editable;
+    
     public Sucursal() {
     }
 
@@ -105,6 +109,14 @@ public class Sucursal implements Serializable{
 
     public void setCategoriaSucursal(List<CategoriaSucursal> categoriaSucursal) {
         this.categoriaSucursal = categoriaSucursal;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
    

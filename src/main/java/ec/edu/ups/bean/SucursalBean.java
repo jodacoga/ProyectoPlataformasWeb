@@ -33,30 +33,34 @@ public class SucursalBean implements Serializable {
     private String direccion;
     private double latencia;
     private double longitud;
+    private List<Sucursal>sucursales=new ArrayList<>();
 
     @PostConstruct
     public void init() {
-        list = sucursalFacade.findAll();
+        sucursales = sucursalFacade.findAll();
 
     }
      
     public String add() {
         sucursalFacade.create(new Sucursal(nombre, direccion, latencia, longitud));
+        sucursales = sucursalFacade.findAll();
         return null;
     }
 
-    public String delete(Sucursal su) {
-        sucursalFacade.remove(su);
-        list = sucursalFacade.findAll();
+   
+
+    
+public String edit(Sucursal s) {
+        s.setEditable(true);
         return null;
     }
 
-    public String edit(Sucursal su) {
-        sucursalFacade.edit(su);
-        list = sucursalFacade.findAll();
+    public String save(Sucursal p) {
+        sucursalFacade.edit(p);
+        sucursales = sucursalFacade.findAll();
+        p.setEditable(false);
         return null;
     }
-
     public SucursalFacade getSucursalFacade() {
         return sucursalFacade;
     }
@@ -95,6 +99,14 @@ public class SucursalBean implements Serializable {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public List<Sucursal> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(List<Sucursal> sucursales) {
+        this.sucursales = sucursales;
     }
 
 }
