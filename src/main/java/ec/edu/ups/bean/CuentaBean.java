@@ -26,11 +26,11 @@ public class CuentaBean implements Serializable{
         @EJB
         private CuentaFacade facadeCuenta;
         
+        private int codigo;
         private String cedula;
-        private Usuario codigo;
         private String correo;
         private String contrasena;
-        private String aux;
+        
         
      
 //        public Usuario codigoUsuario(){
@@ -80,13 +80,15 @@ public class CuentaBean implements Serializable{
         this.contrasena = contrasena;
     }
 
-    public String getAux() {
-        return aux;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setAux(String aux) {
-        this.aux = aux;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
+
+
         
         
 }

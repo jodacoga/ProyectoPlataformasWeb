@@ -16,9 +16,9 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
     @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
 
-    public List<String> getUsersCedula(String cedula2) {
+    public List<String> getUsersCedula(String cedula) {
 
-        String jpql1 = "SELECT u.codigo FROM usuario u where u.cedula=cedula2";
+        String jpql1 = "SELECT u.codigo FROM usuario u where u.cedula="+"'"+cedula+"'";
         List<String> res = em.createQuery(jpql1).getResultList();
 
         return res;

@@ -6,29 +6,79 @@
     <h:head>
         <title>Sucursal</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+
     </h:head>
     <h:body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.xhtml">Inicio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="registroUsuario.xhtml">Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="IngresarSucursal.xhtml">Sucursales</a>
+                        </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="Categoria.xhtml">Categoria Sucursal</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="IngresarProducto.xhtml">Productos</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Cuenta
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="login.xhtml">Iniciar sesion</a></li>
+                                <li><a class="dropdown-item" href="registrarCuenta.xhtml">Registrarse</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
         <h3>Ingresar Datos Sucursal</h3>
-        <h:form>
-            <ul>
+        <h:form class="container">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Nombre Sucursal </span>    
+                <h:inputText id="nombre" value="#{sucursalBean.nombre}"/>
+            </div>
 
-                <li><h:outputText value="Nombre" />       
-                    <h:inputText id="nombre" value="#{sucursalBean.nombre}"/> </li>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Direccion Sucursal</span>    
+                <h:inputText id="direccion" value="#{sucursalBean.direccion}"/>
+            </div>
 
-                <li><h:outputText value="Direccion" />
-                    <h:inputText id="direccion" value="#{sucursalBean.direccion}"/></li>
-
-                <li><h:outputText value="Latencia" />
-                    <h:inputText id="latencia" value="#{sucursalBean.latencia}"/></li>
-
-                <li><h:outputText value="Longitud" />
-                    <h:inputText id="longitud" value="#{sucursalBean.longitud}"/></li>    
+            <div class="input-group mb-3">
+               <span class="input-group-text" id="basic-addon1">Latencia </span>    
+                <h:inputText id="latencia" value="#{sucursalBean.latencia}"/>
+            </div>
 
 
-            </ul>
-            <h:commandButton value="Insertar Sucursal"  action="#{sucursalBean.add()}"/>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Longitud </span>    
+                <h:inputText id="longitud" value="#{sucursalBean.longitud}"/>    
+            </div>        
+
+
+
+
+            <h:commandButton class="btn btn-primary" value="Insertar Sucursal"  action="#{sucursalBean.add()}"/>
             <a href="CrudSucursal.xhtml">Listar Sucursal</a>
         </h:form>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
     </h:body>
