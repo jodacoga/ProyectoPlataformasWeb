@@ -24,7 +24,7 @@ import java.util.Set;
  * @author johan
  */
 @Entity
-public class CategoriaSucursal implements Serializable {
+public class CategoriaProducto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -43,10 +43,10 @@ public class CategoriaSucursal implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
     private List<Producto> producto = new ArrayList<Producto>();
 
-    public CategoriaSucursal() {
+    public CategoriaProducto() {
     }
 
-    public CategoriaSucursal(String nombre, String descripcion, Sucursal sucursalCategoria) {
+    public CategoriaProducto(String nombre, String descripcion, Sucursal sucursalCategoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.sucursalCategoria = sucursalCategoria;
