@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +31,9 @@ public class Cuenta implements Serializable {
     
     private String correo;
     private String contrasena;
+    
+    @Transient
+    private boolean editable;
 
     @OneToOne
     @JoinColumn
@@ -90,9 +94,18 @@ public class Cuenta implements Serializable {
         this.pedido = pedido;
     }
 
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
+
     @Override
     public String toString() {
-        return "Cuenta{" + "correo=" + correo + ", contrasena=" + contrasena + ", usuario=" + usuario + ", tarjetaC=" + tarjetaC + ", pedido=" + pedido + '}';
+        return "Cuenta{" + "correo=" + correo + ", contrasena=" + contrasena +
+        ", usuario=" + usuario + ", tarjetaC=" + tarjetaC + ", pedido=" + pedido + '}';
     }
 
    

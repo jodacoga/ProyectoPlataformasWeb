@@ -5,13 +5,15 @@
 package ec.edu.ups.bean;
 
 import ec.edu.ups.entidades.Cuenta;
-import ec.edu.ups.entidades.Usuario;
 import ec.edu.ups.facade.CuentaFacade;
+import ec.edu.ups.facade.UsuarioFacade;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,14 +26,17 @@ public class CuentaBean implements Serializable{
         private static final long serialVersionUID = 1L;
         
         @EJB
-        private CuentaFacade facadeCuenta;
+        private CuentaFacade cuentaFacade;
+        @EJB
+        private UsuarioFacade usuarioFacade;
         
         private int codigo;
-        private String cedula;
         private String correo;
         private String contrasena;
         
-        
+        private String cedulaCliente;
+        List<String> list = new ArrayList<>();
+        Cuenta cuenta = new Cuenta();
      
 //        public Usuario codigoUsuario(){
 //            codigo = (Usuario) facadeCuenta.getUsersCedula(cedula);
@@ -43,25 +48,45 @@ public class CuentaBean implements Serializable{
 //            return null;
 //        }
         
-        public String addCuenta(){
-//            facadeCuenta.create(new Cuenta(correo, contrasena, cedula));
-            return null;
-        }
-
-    public CuentaFacade getFacadeCuenta() {
-        return facadeCuenta;
+    public String addCuenta() throws Exception{
+        cuentaFacade.guardarCuenta(correo, contrasena, cedulaCliente);
+        //cuenta = cuentaFacade.findAll();
+        return null;
+    }
+    
+    public String buscarCorreo() throws Exception{
+        cuentaFacade.getUsersCorreo(correo);
+        System.out.println("1");
+        System.out.println("1");
+        System.out.println("1");
+        return null;
+    }
+    
+    public String delete(Cuenta pro) {
+        cuentaFacade.remove(pro);
+        //list = sucursalFacade.findAll();
+        return null;
+    }
+    
+    public String edit(Cuenta p) {
+	p.setEditable(true);
+	return null;
     }
 
-    public void setFacadeCuenta(CuentaFacade facadeCuenta) {
-        this.facadeCuenta = facadeCuenta;
+    public String save(Cuenta p) {
+        cuentaFacade.edit(p);
+        //cuenta= productoFacade.findAll();
+	p.setEditable(false);
+	return null;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getCedulaCliente() {
+        return cedulaCliente;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+
+    public void setCedulaCliente(String cedulaCliente) {
+        this.cedulaCliente = cedulaCliente;
     }
 
     public String getCorreo() {
