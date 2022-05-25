@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.bean;
 
-import ec.edu.ups.entidades.CategoriaSucursal;
+import ec.edu.ups.entidades.CategoriaProducto;
 import ec.edu.ups.entidades.Sucursal;
 import ec.edu.ups.facade.CategoriaFacade;
 import ec.edu.ups.facade.SucursalFacade;
@@ -37,7 +37,7 @@ public class CategoriaBean implements Serializable {
     private String descripcion;
     private String nombreSucursal;
     List<String> list = new ArrayList<>();
-    List<CategoriaSucursal> categorias = new ArrayList<>();
+    List<CategoriaProducto> categorias = new ArrayList<>();
 
     @PostConstruct
     public void init() {
@@ -50,18 +50,18 @@ public class CategoriaBean implements Serializable {
         return null;
     }
 
-    public String delete(CategoriaSucursal cs) {
+    public String delete(CategoriaProducto cs) {
         categoriaFacade.remove(cs);
         //list = sucursalFacade.findAll();
         return null;
     }
 
-    public String edit(CategoriaSucursal c) {
+    public String edit(CategoriaProducto c) {
         c.setEditable(true);
         return null;
     }
 
-    public String save(CategoriaSucursal p) {
+    public String save(CategoriaProducto p) {
         categoriaFacade.edit(p);
         categorias = categoriaFacade.findAll();
         p.setEditable(false);
@@ -108,11 +108,11 @@ public class CategoriaBean implements Serializable {
 
   
 
-    public List<CategoriaSucursal> getCategorias() {
+    public List<CategoriaProducto> getCategorias() {
         return categorias;
     }
 
-    public void setCategorias(List<CategoriaSucursal> categorias) {
+    public void setCategorias(List<CategoriaProducto> categorias) {
         this.categorias = categorias;
     }
 
