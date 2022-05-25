@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.facade;
 
-import ec.edu.ups.entidades.CategoriaSucursal;
+import ec.edu.ups.entidades.CategoriaProducto;
 import ec.edu.ups.entidades.Sucursal;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -17,7 +17,7 @@ import java.util.List;
  * @author User
  */
 @Stateless
-public class CategoriaFacade extends AbstractFacade<CategoriaSucursal> {
+public class CategoriaFacade extends AbstractFacade<CategoriaProducto> {
 
     @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
@@ -26,7 +26,7 @@ public class CategoriaFacade extends AbstractFacade<CategoriaSucursal> {
     private SucursalFacade facade;
 
     public CategoriaFacade() {
-        super(CategoriaSucursal.class);
+        super(CategoriaProducto.class);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class CategoriaFacade extends AbstractFacade<CategoriaSucursal> {
     }
 
     public void guardarCategoria(String nombre, String descripcion, String nombreSucursal) throws Exception {
-        CategoriaSucursal c = new CategoriaSucursal();
+        CategoriaProducto c = new CategoriaProducto();
         c.setNombre(nombre);
         c.setDescripcion(descripcion);
         Sucursal sucursal = facade.getSucursalByName(nombreSucursal);
@@ -43,15 +43,15 @@ public class CategoriaFacade extends AbstractFacade<CategoriaSucursal> {
             throw new Exception("La sucursal no existe");
         }
         c.setSucursalCategoria(sucursal);
-        List<CategoriaSucursal> categoriaSucursals = sucursal.getCategoriaSucursal();
+        List<CategoriaProducto> categoriaSucursals = sucursal.getCategoriaSucursal();
         categoriaSucursals.add(c);
         sucursal.setCategoriaSucursal(categoriaSucursals);
         facade.edit(sucursal);
     }
     
-    public CategoriaSucursal getCategoriaByName(String name) {
+    public CategoriaProducto getCategoriaByName(String name) {
         String jpql = "SELECT s FROM CategoriaSucursal s WHERE s.nombre = '" + name+"'";
-        CategoriaSucursal catSucursal = (CategoriaSucursal) em.createQuery(jpql).getSingleResult();
+        CategoriaProducto catSucursal = (CategoriaProducto) em.createQuery(jpql).getSingleResult();
         return catSucursal;
     }
 

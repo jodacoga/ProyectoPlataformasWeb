@@ -79,12 +79,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                                 <div class="dropdown pb-4">
                                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 
-                                        <span class="d-none d-sm-inline mx-1">Cuenta</span>
+                                        <span class="d-none d-sm-inline mx-1">Login</span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                        <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
-                                        <li><a class="dropdown-item" href="#">Registrarse</a></li>
-
+                                        <li><a href="login.xhtml" class="dropdown-item" >Iniciar Sesion</a></li>
+                                        <li><a href="registrarCuenta.xhtml" class="dropdown-item">Registrarse</a></li>
 
                                     </ul>
                                 </div>
@@ -94,6 +93,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                             <div class="container">
                                 
                              <div>Bienvenido, Porfavor inicia Sesion</div>
+                             <h:form>
+                                <div>
+                                    <h3>Iniciar Sesion</h3>
+                                    
+                                    <h:outputText value="correo"/><!-- comment -->
+                                    <h:inputText id="correo" value="#{cuentaBean.correo}"/>
+                                    <h:outputText value="contraseña"/><!-- comment -->
+                                    <h:inputSecret id="passwd" value="#{cuentaBean.contrasena}"/>
+
+                                </div>
+                                
+                                
+                            </h:form>
+                            <div>
+                                <h:commandButton value="Login" action="#{cuentaBean.buscarCorreo()}" />
+                                <a href="registrarCuenta.xhtml">Registrar Cuenta</a>
+                                    
+                            </div>
                             
                             </div><!-- /.container -->
                         </div>
