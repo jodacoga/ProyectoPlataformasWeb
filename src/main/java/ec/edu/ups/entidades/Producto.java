@@ -38,12 +38,12 @@ public class Producto implements Serializable {
      
      @ManyToOne
      @JoinColumn
-     private CategoriaSucursal categoria;
+     private CategoriaProducto categoria;
      
      @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
      private DetalleFactura detalleFactura;
      
-    public Producto(String nombre, String descripcion, double precio, int stock, CategoriaSucursal categoria) {
+    public Producto(String nombre, String descripcion, double precio, int stock, CategoriaProducto categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -103,11 +103,11 @@ public class Producto implements Serializable {
         this.stock = stock;
     }
 
-    public CategoriaSucursal getCategoria() {
+    public CategoriaProducto getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(CategoriaSucursal categoria) {
+    public void setCategoria(CategoriaProducto categoria) {
         this.categoria = categoria;
     }
 

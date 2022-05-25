@@ -38,7 +38,7 @@ public class Sucursal implements Serializable{
     private List<Pedido> pedido = new ArrayList<Pedido>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursalCategoria")
-    private List<CategoriaSucursal> categoriaSucursal = new ArrayList<CategoriaSucursal>();
+    private List<CategoriaProducto> categoriaSucursal = new ArrayList<CategoriaProducto>();
 
     @Transient
     private boolean editable;
@@ -103,11 +103,11 @@ public class Sucursal implements Serializable{
         this.pedido = pedido;
     }
 
-    public List<CategoriaSucursal> getCategoriaSucursal() {
+    public List<CategoriaProducto> getCategoriaSucursal() {
         return categoriaSucursal;
     }
 
-    public void setCategoriaSucursal(List<CategoriaSucursal> categoriaSucursal) {
+    public void setCategoriaSucursal(List<CategoriaProducto> categoriaSucursal) {
         this.categoriaSucursal = categoriaSucursal;
     }
 

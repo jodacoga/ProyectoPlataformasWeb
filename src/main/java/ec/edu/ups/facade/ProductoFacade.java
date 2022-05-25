@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.facade;
 
-import ec.edu.ups.entidades.CategoriaSucursal;
+import ec.edu.ups.entidades.CategoriaProducto;
 import ec.edu.ups.entidades.Producto;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
@@ -35,18 +35,18 @@ public class ProductoFacade extends AbstractFacade<Producto> {
     }
     
     public void guardarProducto(String nombre, String descripcion, double precio, int stock, String nombreCategoria) throws Exception {
-        Producto c = new Producto();
-        c.setNombre(nombre);
-        c.setDescripcion(descripcion);
-        c.setPrecio(precio);
-        c.setStock(stock);
-        CategoriaSucursal catSucursal = categoriaFacade.getCategoriaByName(nombreCategoria);
+        Producto p = new Producto();
+        p.setNombre(nombre);
+        p.setDescripcion(descripcion);
+        p.setPrecio(precio);
+        p.setStock(stock);
+        CategoriaProducto catSucursal = categoriaFacade.getCategoriaByName(nombreCategoria);
         if (catSucursal == null) {
             throw new Exception("La categoria no existe");
         }
-        c.setCategoria(catSucursal);
+        p.setCategoria(catSucursal);
         List<Producto> producto = catSucursal.getProducto();
-        producto.add(c);
+        producto.add(p);
         catSucursal.setProducto(producto);
         categoriaFacade.edit(catSucursal);
     }
