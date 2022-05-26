@@ -56,9 +56,6 @@ public class CuentaBean implements Serializable{
     
     public String buscarCorreo() throws Exception{
         cuentaFacade.getUsersCorreo(correo);
-        System.out.println("1");
-        System.out.println("1");
-        System.out.println("1");
         return null;
     }
     

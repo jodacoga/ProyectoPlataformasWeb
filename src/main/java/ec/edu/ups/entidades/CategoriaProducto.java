@@ -38,7 +38,7 @@ public class CategoriaProducto implements Serializable {
 
     @ManyToOne
     @JoinColumn
-    private Sucursal sucursalCategoria;
+    private Sucursal sucursal;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
     private List<Producto> producto = new ArrayList<Producto>();
@@ -46,10 +46,10 @@ public class CategoriaProducto implements Serializable {
     public CategoriaProducto() {
     }
 
-    public CategoriaProducto(String nombre, String descripcion, Sucursal sucursalCategoria) {
+    public CategoriaProducto(String nombre, String descripcion, Sucursal sucursal) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.sucursalCategoria = sucursalCategoria;
+        this.sucursal = sucursal;
     }
 
     public int getCodigoCategoria() {
@@ -76,12 +76,12 @@ public class CategoriaProducto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Sucursal getSucursalCategoria() {
-        return sucursalCategoria;
+    public Sucursal getSucursal() {
+        return sucursal;
     }
 
-    public void setSucursalCategoria(Sucursal sucursalCategoria) {
-        this.sucursalCategoria = sucursalCategoria;
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 
     public List<Producto> getProducto() {
@@ -103,8 +103,8 @@ public class CategoriaProducto implements Serializable {
     @Override
     public String toString() {
         String u = ",sucursalCategoria==(null)";
-        if (this.sucursalCategoria != null) {
-            u = ", sucursalCategoria=(" + this.sucursalCategoria.getCodigo() + ")";
+        if (this.sucursal != null) {
+            u = ", sucursalCategoria=(" + this.sucursal.getCodigo() + ")";
         }
         String d = ", producto=(null)";
         if (this.producto != null) {

@@ -42,21 +42,21 @@ public class CategoriaFacade extends AbstractFacade<CategoriaProducto> {
         if (sucursal == null) {
             throw new Exception("La sucursal no existe");
         }
-        c.setSucursalCategoria(sucursal);
-        List<CategoriaProducto> categoriaSucursals = sucursal.getCategoriaSucursal();
+        c.setSucursal(sucursal);
+        List<CategoriaProducto> categoriaSucursals = sucursal.getCategoriaProducto();
         categoriaSucursals.add(c);
-        sucursal.setCategoriaSucursal(categoriaSucursals);
+        sucursal.setCategoriaProducto(categoriaSucursals);
         facade.edit(sucursal);
     }
     
     public CategoriaProducto getCategoriaByName(String name) {
-        String jpql = "SELECT s FROM CategoriaSucursal s WHERE s.nombre = '" + name+"'";
+        String jpql = "SELECT s FROM CategoriaProducto s WHERE s.nombre = '" + name+"'";
         CategoriaProducto catSucursal = (CategoriaProducto) em.createQuery(jpql).getSingleResult();
         return catSucursal;
     }
 
     public List<String> getCategoriaNames() {
-        String jpql = "SELECT u.nombre FROM CategoriaSucursal u ";
+        String jpql = "SELECT u.nombre FROM CategoriaProducto u ";
         List<String> res = em.createQuery(jpql).getResultList();
         return res;
     }

@@ -37,8 +37,8 @@ public class Sucursal implements Serializable{
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursal")
     private List<Pedido> pedido = new ArrayList<Pedido>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursalCategoria")
-    private List<CategoriaProducto> categoriaSucursal = new ArrayList<CategoriaProducto>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursal")
+    private List<CategoriaProducto> categoriaProducto = new ArrayList<CategoriaProducto>();
 
     @Transient
     private boolean editable;
@@ -103,12 +103,12 @@ public class Sucursal implements Serializable{
         this.pedido = pedido;
     }
 
-    public List<CategoriaProducto> getCategoriaSucursal() {
-        return categoriaSucursal;
+    public List<CategoriaProducto> getCategoriaProducto() {
+        return categoriaProducto;
     }
 
-    public void setCategoriaSucursal(List<CategoriaProducto> categoriaSucursal) {
-        this.categoriaSucursal = categoriaSucursal;
+    public void setCategoriaProducto(List<CategoriaProducto> categoriaProducto) {
+        this.categoriaProducto = categoriaProducto;
     }
 
     public boolean isEditable() {
@@ -124,8 +124,8 @@ public class Sucursal implements Serializable{
     @Override
     public String toString() {
         String d = ", categoriaSucursal=(null)";
-        if (this.categoriaSucursal != null) {
-            d = ", categoriaSucursal=" + this.categoriaSucursal.toString() + ")";
+        if (this.categoriaProducto != null) {
+            d = ", categoriaSucursal=" + this.categoriaProducto.toString() + ")";
         }
         return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + d+ '}';
     }
