@@ -46,6 +46,7 @@ public class Cuenta implements Serializable {
     private Set<Pedido> pedido = new HashSet<Pedido>();
 
     public Cuenta() {
+        this("","",null);
     }
 
     public Cuenta(String correo, String contrasena, Usuario usuario) {
@@ -104,8 +105,12 @@ public class Cuenta implements Serializable {
 
     @Override
     public String toString() {
-        return "Cuenta{" + "correo=" + correo + ", contrasena=" + contrasena +
-        ", usuario=" + usuario + ", tarjetaC=" + tarjetaC + ", pedido=" + pedido + '}';
+        String u = ",usuario=(null)";
+        if(this.usuario != null){
+            u=",UsuarioId=("+this.usuario.getCedula()+")";
+        }
+        return "Cuenta{" + "correo=" + correo + ", contrasena=" + contrasena +u+
+               ", tarjetaC=" + tarjetaC + ", pedido=" + pedido + '}';
     }
 
    

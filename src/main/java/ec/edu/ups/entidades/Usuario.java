@@ -55,6 +55,7 @@ public class Usuario implements Serializable {
     private List<Factura> facturaUsuario = new ArrayList<Factura>();
 
     public Usuario() {
+        this("","","");
     }
 
     public Usuario(String nombre, String apellido, String cedula) {
@@ -134,6 +135,10 @@ public class Usuario implements Serializable {
         String u = ",tipoUsuario==(null)";
         if (this.tipoUsuario != null) {
             u = ", tipoUsuario=(" + this.tipoUsuario.getIdTipo() + ")";
+        }
+        String c = ",cuenta==(null)";
+        if (this.cuenta != null) {
+            c = ", cuenta=(" + this.cuenta.toString() + ")";
         }
         String d = ", facturaUsuario=(null)";
         if (this.facturaUsuario != null) {
