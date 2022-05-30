@@ -21,7 +21,7 @@ public class ProductoFacade extends AbstractFacade<Producto> {
 
     @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
-    
+
     @EJB
     private CategoriaFacade categoriaFacade;
 
@@ -33,7 +33,7 @@ public class ProductoFacade extends AbstractFacade<Producto> {
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     public void guardarProducto(String nombre, String descripcion, double precio, int stock, String nombreCategoria) throws Exception {
         Producto p = new Producto();
         p.setNombre(nombre);
@@ -50,9 +50,9 @@ public class ProductoFacade extends AbstractFacade<Producto> {
         catSucursal.setProducto(producto);
         categoriaFacade.edit(catSucursal);
     }
-    
+
     public Producto getProductoByName(String name) {
-        String jpql = "SELECT s FROM Producto s WHERE s.nombre = '" + name+"'";
+        String jpql = "SELECT s FROM Producto s WHERE s.nombre = '" + name + "'";
         Producto producto = (Producto) em.createQuery(jpql).getSingleResult();
         return producto;
     }
@@ -63,4 +63,16 @@ public class ProductoFacade extends AbstractFacade<Producto> {
         return res;
     }
 
+    public List<Producto> buscarporNombreProducto(String nombre) {
+        String jpqlProd = "SELECT p FROM Producto p WHERE p.nombre = '" + nombre + "'";
+//        System.out.println("NOMBREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEJJJJJJJJJJJJOCILKNMCIDLUKbdc.s");
+//        System.out.println(nombre);
+
+        return em.createQuery(jpqlProd, Producto.class).getResultList();
+    }
+
+    public List<Producto> buscarPorCategoria(String nombreCategoria) {
+        String jpqlCat = "select p from Producto p JOIN p.categoria c where c.nombre = '" + nombreCategoria + "'";
+        return em.createQuery(jpqlCat, Producto.class).getResultList();
+    }
 }

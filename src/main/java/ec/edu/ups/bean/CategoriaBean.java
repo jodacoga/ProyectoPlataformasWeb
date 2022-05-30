@@ -32,10 +32,10 @@ public class CategoriaBean implements Serializable {
     private CategoriaFacade categoriaFacade;
     @EJB
     private SucursalFacade sucursalFacade;
-    
+
     private String nombre;
     private String descripcion;
-    private String nombreSucursal;
+
     List<String> list = new ArrayList<>();
     List<CategoriaProducto> categorias = new ArrayList<>();
 
@@ -45,7 +45,8 @@ public class CategoriaBean implements Serializable {
     }
 
     public String add() throws Exception {
-        categoriaFacade.guardarCategoria(nombre, descripcion, nombreSucursal);
+        categoriaFacade.create(new CategoriaProducto(nombre, descripcion));
+        //categoriaFacade.guardarCategoria(nombre, descripcion);
         categorias = categoriaFacade.findAll();
         return null;
     }
@@ -98,16 +99,6 @@ public class CategoriaBean implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getNombreSucursal() {
-        return nombreSucursal;
-    }
-
-    public void setNombreSucursal(String nombreSucursal) {
-        this.nombreSucursal = nombreSucursal;
-    }
-
-  
-
     public List<CategoriaProducto> getCategorias() {
         return categorias;
     }
@@ -116,6 +107,4 @@ public class CategoriaBean implements Serializable {
         this.categorias = categorias;
     }
 
-    
-    
 }

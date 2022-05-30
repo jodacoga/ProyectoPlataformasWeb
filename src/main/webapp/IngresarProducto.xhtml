@@ -123,6 +123,14 @@
                                     </h:selectOneMenu> 
                                 </div>
 
+                                <div class="input-group mb-3">
+
+                                    <span class="input-group-text" id="basic-addon5">Seleccione Sucursal </span>
+                                    <h:selectOneMenu class="form-select form-select-sm" value="#{productoBean.nombreSucursal}">
+                                        <f:selectItems value="#{productoBean.listaSucursales}" />
+                                    </h:selectOneMenu> 
+                                </div>
+
 
 
                                 <h:commandButton class="btn btn-primary" value="Ingresar Producto"  action="#{productoBean.add()}"/>

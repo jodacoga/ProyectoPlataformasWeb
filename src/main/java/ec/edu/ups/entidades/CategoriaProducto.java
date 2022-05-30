@@ -9,15 +9,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -36,20 +33,16 @@ public class CategoriaProducto implements Serializable {
     @Transient
     private boolean editable;
 
-    @ManyToOne
-    @JoinColumn
-    private Sucursal sucursal;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
     private List<Producto> producto = new ArrayList<Producto>();
 
     public CategoriaProducto() {
     }
 
-    public CategoriaProducto(String nombre, String descripcion, Sucursal sucursal) {
+    public CategoriaProducto(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.sucursal = sucursal;
+
     }
 
     public int getCodigoCategoria() {
@@ -76,14 +69,6 @@ public class CategoriaProducto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Sucursal getSucursal() {
-        return sucursal;
-    }
-
-    public void setSucursal(Sucursal sucursal) {
-        this.sucursal = sucursal;
-    }
-
     public List<Producto> getProducto() {
         return producto;
     }
@@ -103,9 +88,7 @@ public class CategoriaProducto implements Serializable {
     @Override
     public String toString() {
         String u = ",sucursalCategoria==(null)";
-        if (this.sucursal != null) {
-            u = ", sucursalCategoria=(" + this.sucursal.getCodigo() + ")";
-        }
+
         String d = ", producto=(null)";
         if (this.producto != null) {
             d = ", producto=" + this.producto.toString() + ")";

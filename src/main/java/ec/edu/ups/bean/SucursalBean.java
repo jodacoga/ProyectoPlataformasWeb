@@ -33,24 +33,21 @@ public class SucursalBean implements Serializable {
     private String direccion;
     private double latencia;
     private double longitud;
-    private List<Sucursal>sucursales=new ArrayList<>();
+    private List<Sucursal> sucursales = new ArrayList<>();
 
     @PostConstruct
     public void init() {
         sucursales = sucursalFacade.findAll();
 
     }
-     
+
     public String add() {
         sucursalFacade.create(new Sucursal(nombre, direccion, latencia, longitud));
         sucursales = sucursalFacade.findAll();
         return null;
     }
 
-   
-
-    
-public String edit(Sucursal s) {
+    public String edit(Sucursal s) {
         s.setEditable(true);
         return null;
     }
@@ -61,6 +58,7 @@ public String edit(Sucursal s) {
         p.setEditable(false);
         return null;
     }
+
     public SucursalFacade getSucursalFacade() {
         return sucursalFacade;
     }

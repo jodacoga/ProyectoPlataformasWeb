@@ -44,4 +44,9 @@ public abstract class AbstractFacade<T> {
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
+    
+    public List<T> listar() {
+        String jpql = "SELECT e FROM "+ entityClass.getCanonicalName() + " e";
+        return getEntityManager().createQuery(jpql, entityClass).getResultList();
+    }
 }

@@ -10,10 +10,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,22 +30,25 @@ public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int codigoProducto;
-    
-     private String nombre;
-     private String descripcion;
-     private double precio;
-     //private byte imagen;
-     private int stock;
-     @Transient
-     private boolean editable;
-     
-     @ManyToOne
-     @JoinColumn
-     private CategoriaProducto categoria;
-     
-     @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
-     private DetalleFactura detalleFactura;
-     
+
+    private String nombre;
+    private String descripcion;
+    private double precio;
+    //private byte imagen;
+    private int stock;
+    @Transient
+    private boolean editable;
+
+    @ManyToOne
+    @JoinColumn
+    private CategoriaProducto categoria;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
+    private DetalleFactura detalleFactura;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listaProductos")
+    private List<Sucursal> listaSucursal = new ArrayList<Sucursal>();
+
     public Producto(String nombre, String descripcion, double precio, int stock, CategoriaProducto categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -50,6 +56,7 @@ public class Producto implements Serializable {
         //this.imagen = imagen;
         this.stock = stock;
         this.categoria = categoria;
+        listaSucursal = new ArrayList<Sucursal>();
     }
 
     public Producto() {
@@ -86,15 +93,13 @@ public class Producto implements Serializable {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-/**
-    public byte getImagen() {
-        return imagen;
-    }
 
-    public void setImagen(byte imagen) {
-        this.imagen = imagen;
-    }
-**/
+    /**
+     * public byte getImagen() { return imagen; }
+     *
+     * public void setImagen(byte imagen) { this.imagen = imagen; }
+*
+     */
     public int getStock() {
         return stock;
     }
@@ -126,21 +131,30 @@ public class Producto implements Serializable {
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
+
+    public List<Sucursal> getListaSucursal() {
+        return listaSucursal;
+    }
+
+    public void setListaSucursal(List<Sucursal> listaSucursal) {
+        this.listaSucursal = listaSucursal;
+    }
     
-    
+    public void addSucursal(Sucursal su){
+        this.listaSucursal.add(su);
+    }
+
+   
+
+ 
 
     @Override
     public String toString() {
         String u = ",Categoria==(null)";
         if (this.categoria != null) {
-            u = ", Categoria=(" + this.categoria.getCodigoCategoria()+ ")";
+            u = ", Categoria=(" + this.categoria.getCodigoCategoria() + ")";
         }
         return "Producto{" + "codigoProducto=" + codigoProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stock=" + stock + u + ", detalleFactura=" + detalleFactura + '}';
     }
-     
-     
-    
-    
 
 }
-

@@ -24,6 +24,8 @@ public class CategoriaFacade extends AbstractFacade<CategoriaProducto> {
  
     @EJB
     private SucursalFacade facade;
+    
+
 
     public CategoriaFacade() {
         super(CategoriaProducto.class);
@@ -34,19 +36,14 @@ public class CategoriaFacade extends AbstractFacade<CategoriaProducto> {
         return em;
     }
 
-    public void guardarCategoria(String nombre, String descripcion, String nombreSucursal) throws Exception {
+    public void guardarCategoria(String nombre, String descripcion) throws Exception {
+        
         CategoriaProducto c = new CategoriaProducto();
         c.setNombre(nombre);
         c.setDescripcion(descripcion);
-        Sucursal sucursal = facade.getSucursalByName(nombreSucursal);
-        if (sucursal == null) {
-            throw new Exception("La sucursal no existe");
-        }
-        c.setSucursal(sucursal);
-        List<CategoriaProducto> categoriaSucursals = sucursal.getCategoriaProducto();
-        categoriaSucursals.add(c);
-        sucursal.setCategoriaProducto(categoriaSucursals);
-        facade.edit(sucursal);
+        
+       
+       
     }
     
     public CategoriaProducto getCategoriaByName(String name) {

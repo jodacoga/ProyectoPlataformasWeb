@@ -66,6 +66,9 @@
                                         <li>
                                             <a href="CrudProductos.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ver Productos</span> 2</a>
                                         </li>
+                                                                                <li>
+                                            <a href="ListarProducto.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Buscar Productos</span> 2</a>
+                                        </li>
 
                                     </ul>
                                 </li>
@@ -105,10 +108,7 @@
                                         <h:inputText value="#{o.descripcion}" size="10" rendered="#{o.editable}" />
                                         <h:outputText value="#{o.descripcion}" rendered="#{not o.editable}" />
                                     </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Sucursal</f:facet>
-                                            #{o.sucursal.nombre}
-                                    </h:column>
+                                    
                                     <h:column>
                                         <f:facet name="header">Action</f:facet>
                                         <h:commandLink class="link-warning" value="Editar" action="#{categoriaBean.edit(o)}" rendered="#{not o.editable}" />

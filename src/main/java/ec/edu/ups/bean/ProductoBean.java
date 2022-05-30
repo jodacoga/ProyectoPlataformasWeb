@@ -5,8 +5,10 @@
 package ec.edu.ups.bean;
 
 import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.Sucursal;
 import ec.edu.ups.facade.CategoriaFacade;
 import ec.edu.ups.facade.ProductoFacade;
+import ec.edu.ups.facade.SucursalFacade;
 import jakarta.annotation.PostConstruct;
 
 import jakarta.ejb.EJB;
@@ -25,53 +27,72 @@ import java.util.List;
 @Named
 @SessionScoped
 public class ProductoBean implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @EJB
     private ProductoFacade productoFacade;
     @EJB
     private CategoriaFacade categoriaFacade;
-    
+    @EJB
+    private SucursalFacade sucursalFacade;
+
     private String nombre;
     private String descripcion;
     private double precio;
     private int stock;
     private String nombreCategoria;
+    private String nombreSucursal;
     List<String> list = new ArrayList<>();
     List<Producto> productos = new ArrayList<>();
-    
+
     @PostConstruct
     public void init() {
         productos = productoFacade.findAll();
     }
-    
+
     public String add() throws Exception {
+        
+     
+        
         productoFacade.guardarProducto(nombre, descripcion, precio, stock, nombreCategoria);
-        productos= productoFacade.findAll();
+        productos = productoFacade.findAll();
         return null;
     }
-    
+
     public String delete(Producto pro) {
         productoFacade.remove(pro);
         //list = sucursalFacade.findAll();
         return null;
     }
-    
+
     public String edit(Producto p) {
-	p.setEditable(true);
-	return null;
+        p.setEditable(true);
+        return null;
     }
 
     public String save(Producto p) {
         productoFacade.edit(p);
-        productos= productoFacade.findAll();
-	p.setEditable(false);
-	return null;
+        productos = productoFacade.findAll();
+        p.setEditable(false);
+        return null;
     }
 
-    public List<String> getListaCategoria(){
+    public List<String> getListaCategoria() {
         list = categoriaFacade.getCategoriaNames();
         return list;
+    }
+
+    public List<String> getListaSucursales() {
+        list = sucursalFacade.getSucursalNames();
+        return list;
+    }
+
+    public String getNombreSucursal() {
+        return nombreSucursal;
+    }
+
+    public void setNombreSucursal(String nombreSucursal) {
+        this.nombreSucursal = nombreSucursal;
     }
 
     public String getNombre() {
@@ -121,6 +142,5 @@ public class ProductoBean implements Serializable {
     public void setProductos(List<Producto> productos) {
         this.productos = productos;
     }
-    
-    
+
 }

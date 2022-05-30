@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
@@ -37,13 +39,16 @@ public class Sucursal implements Serializable{
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursal")
     private List<Pedido> pedido = new ArrayList<Pedido>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sucursal")
-    private List<CategoriaProducto> categoriaProducto = new ArrayList<CategoriaProducto>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn
+    private List<Producto> listaProductos = new ArrayList<Producto>();
 
+   
     @Transient
     private boolean editable;
     
     public Sucursal() {
+        
     }
 
     public Sucursal(String nombre, String direccion, double latencia, double longitud) {
@@ -51,7 +56,22 @@ public class Sucursal implements Serializable{
         this.direccion = direccion;
         this.latencia = latencia;
         this.longitud = longitud;
+        listaProductos = new ArrayList<Producto>();
     }
+
+    public List<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(List<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+
+    public void addSucursal(Producto p){
+        this.listaProductos.add(p);
+    }
+
+
 
     public String getNombre() {
         return nombre;
@@ -103,14 +123,6 @@ public class Sucursal implements Serializable{
         this.pedido = pedido;
     }
 
-    public List<CategoriaProducto> getCategoriaProducto() {
-        return categoriaProducto;
-    }
-
-    public void setCategoriaProducto(List<CategoriaProducto> categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
-    }
-
     public boolean isEditable() {
         return editable;
     }
@@ -124,8 +136,8 @@ public class Sucursal implements Serializable{
     @Override
     public String toString() {
         String d = ", categoriaSucursal=(null)";
-        if (this.categoriaProducto != null) {
-            d = ", categoriaSucursal=" + this.categoriaProducto.toString() + ")";
+        if (this.listaProductos != null) {
+            d = ", categoriaSucursal=" + this.listaProductos.toString() + ")";
         }
         return "Sucursal{" + "codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion + ", latencia=" + latencia + ", longitud=" + longitud + ", pedido=" + pedido + d+ '}';
     }

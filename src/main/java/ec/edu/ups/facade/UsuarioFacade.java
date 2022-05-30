@@ -66,4 +66,6 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         tipo.setUsuarios(usuarios);
         facadeTipo.edit(tipo);
     }
+  
+
 }

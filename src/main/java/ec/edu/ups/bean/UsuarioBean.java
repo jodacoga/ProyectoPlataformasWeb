@@ -40,10 +40,11 @@ public class UsuarioBean implements Serializable {
     private String cedula;
     private LocalDate fechaNacimiento;
     private String tipo;
+
     List<String> list = new ArrayList<>();
     List<Usuario> usuarios = new ArrayList<>();
-    
-     @PostConstruct
+
+    @PostConstruct
     public void init() {
         usuarios = usuarioFacade.findAll();
 
@@ -56,7 +57,7 @@ public class UsuarioBean implements Serializable {
         return null;
     }
 
-       public String edit(Usuario u) {
+    public String edit(Usuario u) {
         u.setEditable(true);
         return null;
     }
@@ -68,13 +69,14 @@ public class UsuarioBean implements Serializable {
         return null;
     }
 
-   
     public List<String> getlistaTipo() {
 
         list = tipoUsuarioFacade.getTipoDescripcion();
 
         return list;
     }
+    
+ 
 
     public UsuarioFacade getUsuarioFacade() {
         return usuarioFacade;
@@ -131,6 +133,5 @@ public class UsuarioBean implements Serializable {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-    
 
 }
