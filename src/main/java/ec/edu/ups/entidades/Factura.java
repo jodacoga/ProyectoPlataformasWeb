@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -43,6 +43,10 @@ public class Factura implements Serializable{
     @ManyToOne
     @JoinColumn
     private TipoPago tipoPago;
+    
+    @ManyToOne
+    @JoinColumn
+    private Cuenta cuentaFactura;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facturadetalle")
     private List<DetalleFactura> facturadetalle;
@@ -136,6 +140,24 @@ public class Factura implements Serializable{
     public void setCodigoFactura(int codigoFactura) {
         this.codigoFactura = codigoFactura;
     }
+
+    public Cuenta getCuentaFactura() {
+        return cuentaFactura;
+    }
+
+    public void setCuentaFactura(Cuenta cuentaFactura) {
+        this.cuentaFactura = cuentaFactura;
+    }
+
+    
+
+    @Override
+    public String toString() {
+        return "Factura{" + "codigoFactura=" + codigoFactura + ", fechaFactura=" + fechaFactura + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + ", estadoFactura=" + estadoFactura + ", usuarioFactura=" + usuarioFactura + ", tipoPago=" + tipoPago + ", cuenta=" + cuentaFactura + ", facturadetalle=" + facturadetalle + ", pedidoFactura=" + pedidoFactura + '}';
+    }
+    
+    
+    
     
     
     

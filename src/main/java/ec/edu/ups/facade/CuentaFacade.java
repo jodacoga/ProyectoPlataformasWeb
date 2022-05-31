@@ -61,4 +61,9 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
         return em;
     }
 
+     public Cuenta getCuentaNumero(int numero) {
+        String jpql = "SELECT u FROM Cuenta u WHERE u.codigoCuenta = " + numero;
+        Cuenta cuenta = (Cuenta) em.createQuery(jpql).getSingleResult();
+        return cuenta;
+    }
 }
