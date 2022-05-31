@@ -44,7 +44,7 @@ public class SucursalBean implements Serializable {
     public String add() {
         sucursalFacade.create(new Sucursal(nombre, direccion, latencia, longitud));
         sucursales = sucursalFacade.findAll();
-        return null;
+        return "mensaje-exito?faces-redirect=true&texto=Sucursal creada con exito";
     }
 
     public String edit(Sucursal s) {

@@ -48,7 +48,7 @@ public class CategoriaBean implements Serializable {
         categoriaFacade.create(new CategoriaProducto(nombre, descripcion));
         //categoriaFacade.guardarCategoria(nombre, descripcion);
         categorias = categoriaFacade.findAll();
-        return null;
+        return "mensaje-exito?faces-redirect=true&texto=Categoria Creada con exito";
     }
 
     public String delete(CategoriaProducto cs) {

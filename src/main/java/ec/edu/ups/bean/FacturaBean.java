@@ -294,7 +294,7 @@ public class FacturaBean implements Serializable {
 
     }
 
-    public void add() {
+    public String add() {
         Factura factura = new Factura();
         factura.setFechaFactura(new Date());
         factura.setCuentaFactura(cuenta);
@@ -315,7 +315,7 @@ public class FacturaBean implements Serializable {
             productoFacade.edit(p);
         }
         
-        
+        return "mensaje-exito?faces-redirect=true&texto=Se ha generado la factura";
 
     }
 

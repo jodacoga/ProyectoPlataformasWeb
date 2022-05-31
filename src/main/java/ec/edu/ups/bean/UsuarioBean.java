@@ -54,7 +54,7 @@ public class UsuarioBean implements Serializable {
         fechaNacimiento = java.time.LocalDate.now();
         usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo);
         usuarios = usuarioFacade.findAll();
-        return null;
+        return "mensaje-exito?faces-redirect=true&texto=Persona ingresada con exito";
     }
 
     public String edit(Usuario u) {

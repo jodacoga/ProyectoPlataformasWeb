@@ -56,7 +56,7 @@ public class ProductoBean implements Serializable {
         
         productoFacade.guardarProducto(nombre, descripcion, precio, stock, nombreCategoria);
         productos = productoFacade.findAll();
-        return null;
+        return "mensaje-exito?faces-redirect=true&texto=Producto Creado con exito";
     }
 
     public String delete(Producto pro) {
