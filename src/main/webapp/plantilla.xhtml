@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png" />
+        <title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="./template/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="./template/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+        <!-- This page CSS -->
+        <!-- chartist CSS -->
+        <link href="./template/plugins/chartist-js/dist/chartist.min.css" rel="stylesheet" />
+        <link href="./template/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet" />
+        <!--c3 CSS -->
+        <link href="./template/plugins/c3-master/c3.min.css" rel="stylesheet" />
+        <!-- Custom CSS -->
+        <link href="./template/css/style.css" rel="stylesheet" />
+        <!-- Dashboard 1 Page CSS -->
+        <link href="./template/css/pages/dashboard2.css" rel="stylesheet" />
+        <!-- You can change the theme colors from here -->
+        <link href="./template/css/colors/default-dark.css" id="theme" rel="stylesheet" />
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </h:head>
+
+    <body class="fix-header fix-sidebar card-no-border">
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <!--        <div class="preloader">
+                    <div class="loader">
+                        <div class="loader__figure"></div>
+                        <p class="loader__label">Pizzeria Don Bosco</p>
+                    </div>
+                </div>-->
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+            <!-- ============================================================== -->
+            <!-- Topbar header - style you can find in pages.scss -->
+            <!-- ============================================================== -->
+            <header class="topbar">
+                <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">
+                            <!-- Logo icon --><b>
+                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                                <!-- Dark Logo icon -->
+                                <img src="./template/images/logo.png" width="52" class="dark-logo" />
+                                <!-- Light Logo icon -->
+                                <!-- <img src="./images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text --><span>
+                                Pizzeria Don Bosco
+                                <!-- dark Logo text -->
+                                <!-- <img src="./images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                                <!-- Light Logo text -->
+                                <!-- <img src="./images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
+                            </span>
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-collapse">
+                        <!-- ============================================================== -->
+                        <!-- toggle and nav items -->
+                        <!-- ============================================================== -->
+                        <ul class="navbar-nav mr-auto">
+                            <!-- This is  -->
+                            <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+                                                     href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                            <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark"
+                                                     href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+
+                        </ul>
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <ul class="navbar-nav my-lg-0">
+
+                            <!-- ============================================================== -->
+                            <!-- Profile -->
+                            <!-- ============================================================== -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <img src="./template/images/usuario.png" alt="user" class="profile-pic" />
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                    <ul class="dropdown-user">
+                                        <li>
+                                            <div class="dw-user-box">
+                                                <div class="u-img"><img src="./template/images/usuario.png" alt="user" />
+                                                </div>
+                                                <div class="u-text">
+                                                    <h4>Usuario</h4>
+                                                    <p class="text-muted">usuario@gmail.com</p>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- <li role="separator" class="divider"></li>
+                                        <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                        <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li> -->
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- ============================================================== -->
+            <!-- End Topbar header -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <aside class="left-sidebar">
+                <!-- Sidebar scroll-->
+                <div class="scroll-sidebar">
+                    <!-- Sidebar navigation-->
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <!-- <li class="user-profile">
+                                <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img
+                                        src="./images/users/profile.png" alt="user" /><span class="hide-menu">Steave Jobs
+                                    </span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="javascript:void()">My Profile </a></li>
+                                    <li><a href="javascript:void()">My Balance</a></li>
+                                    <li><a href="javascript:void()">Inbox</a></li>
+                                    <li><a href="javascript:void()">Account Setting</a></li>
+                                    <li><a href="javascript:void()">Logout</a></li>
+                                </ul>
+                            </li> -->
+                            <li class="nav-devider"></li>
+                            <li class="nav-small-cap">MENU</li>
+                            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                        class="mdi mdi-gauge"></i><span class="hide-menu">Tareas <span
+                                            class="label label-rouded label-themecolor pull-right">12</span></span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="registroUsuario.xhtml">Registrar Usuario </a></li>
+                                    <li><a href="CrudPersona.xhtml">Crud Usuario</a></li>
+                                    <li><a href="IngresarCuenta.xhtml">Registrar Cuenta</a></li>
+                                    <li><a href="CrudProductos.xhtml">Crud Cuenta</a></li>
+                                    <li><a href="IngresarProducto.xhtml">Registrar Producto</a></li>
+                                    <li><a href="CrudProductos.xhtml">Crud Producto</a></li>
+                                    <li><a href="Categoria.xhtml">Registrar Categoria</a></li>
+                                    <li><a href="CrudCategoria.xhtml">Crud Categoria</a></li>
+                                    <li><a href="IngresarSucursal.xhtml">Registrar Sucursal</a></li>
+                                    <li><a href="CrudSucursal.xhtml">Crud Sucursal</a></li>
+                                    <li><a href="IngresarFactura.xhtml">Registrar Factura</a></li>
+                                    <li><a href="VerFactura.xhtml">Ver Facturas</a></li>
+                                </ul>
+                            </li>
+                            <!-- <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i
+                                        class="mdi mdi-bullseye"></i><span class="hide-menu">Apps</span></a>
+                                <ul aria-expanded="false" class="collapse">
+                                    <li><a href="app-calendar.html">Calendar</a></li>
+                                    <li><a href="app-chat.html">Chat app</a></li>
+                                    <li><a href="app-ticket.html">Support Ticket</a></li>
+                                    <li><a href="app-contact.html">Contact / Employee</a></li>
+                                    <li><a href="app-contact2.html">Contact Grid</a></li>
+                                    <li><a href="app-contact-detail.html">Contact Detail</a></li>
+                                </ul>
+                            </li> -->
+
+                        </ul>
+                    </nav>
+                    <!-- End Sidebar navigation -->
+                </div>
+                <!-- End Sidebar scroll-->
+            </aside>
+            <!-- ============================================================== -->
+            <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Page wrapper  -->
+            <!-- ============================================================== -->
+            <div class="page-wrapper">
+                <div class="container-fluid">
+                    <ui:insert name="content"></ui:insert>
+                </div>
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <footer class="footer"> © 2022 Proyecto Plataformas Web </footer>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Page wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="./template/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap popper Core JavaScript -->
+        <script src="./template/plugins/bootstrap/js/popper.min.js"></script>
+        <script src="./template/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="./template/js/perfect-scrollbar.jquery.min.js"></script>
+        <!--Wave Effects -->
+        <script src="./template/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="./template/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="./template/js/custom.min.js"></script>
+
+        <!-- ============================================================== -->
+        <!-- This page plugins -->
+        <!-- ============================================================== -->
+
+        <script src="./template/plugins/chartist-js/dist/chartist.min.js"></script>
+        <script src="./template/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+        <!--c3 JavaScript -->
+        <script src="./template/plugins/d3/d3.min.js"></script>
+        <script src="./template/plugins/c3-master/c3.min.js"></script>
+        <!-- Chart JS -->
+        <script src="./template/js/dashboard2.js"></script>
+        <!-- ============================================================== -->
+        <!-- Style switcher -->
+        <!-- ============================================================== -->
+        <script src="./template/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+    </body>
+
+</html>

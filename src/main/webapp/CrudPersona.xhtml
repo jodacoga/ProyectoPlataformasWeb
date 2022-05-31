@@ -2,138 +2,51 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>User Management</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="./plantilla.xhtml">
+        <h:head>
+            <title>Lista Personas</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
 
-    </h:head>
-    <h:body>
+        </h:head>
+        <ui:define name="content">
+            <div class="container">
 
-        <div class="wrapper">
+                <h:form>
+                    <h:dataTable class="table table-striped" value="#{usuarioBean.usuarios}" var="o" >
+                        <h:column>
+                            <f:facet name="header">Cedula</f:facet>
+                                #{o.cedula}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Nombre</f:facet>
+                            <h:inputText value="#{o.nombre}" size="10" rendered="#{o.editable}" />
+                            <h:outputText value="#{o.nombre}" rendered="#{not o.editable}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Apellidos</f:facet>
+                            <h:inputText value="#{o.apellido}" size="10" rendered="#{o.editable}" />
+                            <h:outputText value="#{o.apellido}" rendered="#{not o.editable}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Fecha Nacimiento</f:facet>
+                                #{o.fechaNacimiento}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Action</f:facet>
+                            <h:commandLink class="link-warning" value="Editar" action="#{usuarioBean.edit(o)}" rendered="#{not o.editable}" />
+                            <h:commandLink value="Guardar" action="#{usuarioBean.save(o)}" rendered="#{o.editable}" />
+                        </h:column>
+                    </h:dataTable>
 
+                    <a href='registroUsuario.xhtml'> Ingresar Usuario</a>
 
-
-            <div class="container-fluid">
-
-                <div class="row flex-nowrap">
-                    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="collapseExample">
-                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-
-                            <span class="fs-5 d-none d-sm-inline">Menu</span>
-
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                                <li class="nav-item">
-                                    <a href="index.xhtml" class="nav-link align-middle px-0">
-                                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Inicio</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuario</span> </a>
-                                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                        <li class="w-100">
-                                            <a href="registroUsuario.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ingresar Usuario</span> 1 </a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="IngresarSucursal.xhtml" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Sucursal</span></a>
-                                </li>
-                                <li>
-                                    <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Categoria Sucursal</span></a>
-                                    <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                        <li class="w-100">
-                                            <a href="Categoria.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ingresar Categoria</span> 1</a>
-                                        </li>
-                                        <li class="w-100">
-                                            <a href="CrudCategoria.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ver Categorias</span> 1</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-                                <li>
-                                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Productos</span> </a>
-                                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                        <li class="w-100">
-                                            <a href="IngresarProducto.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ingresar Productos</span> 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="CrudProductos.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ver Productos</span> 2</a>
-                                        </li>
-                                        <li>
-                                            <a href="ListarProducto.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Buscar Productos</span> 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                            <hr></hr>
-                            <div class="dropdown pb-4">
-                                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-
-                                    <span class="d-none d-sm-inline mx-1">Cuenta</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                    <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
-                                    <li><a class="dropdown-item" href="#">Registrarse</a></li>
-
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col py-3">
-                        <div class="container">
-
-                            <h:form>
-                                <h:dataTable class="table table-striped" value="#{usuarioBean.usuarios}" var="o" >
-                                    <h:column>
-                                        <f:facet name="header">Cedula</f:facet>
-                                            #{o.cedula}
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Nombre</f:facet>
-                                        <h:inputText value="#{o.nombre}" size="10" rendered="#{o.editable}" />
-                                        <h:outputText value="#{o.nombre}" rendered="#{not o.editable}" />
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Apellidos</f:facet>
-                                        <h:inputText value="#{o.apellido}" size="10" rendered="#{o.editable}" />
-                                        <h:outputText value="#{o.apellido}" rendered="#{not o.editable}" />
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Fecha Nacimiento</f:facet>
-                                            #{o.fechaNacimiento}
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Action</f:facet>
-                                        <h:commandLink class="link-warning" value="Editar" action="#{usuarioBean.edit(o)}" rendered="#{not o.editable}" />
-                                        <h:commandLink value="Guardar" action="#{usuarioBean.save(o)}" rendered="#{o.editable}" />
-                                    </h:column>
-                                </h:dataTable>
-
-                                <a href='registroUsuario.xhtml'> Ingresar Usuario</a>
-
-                                <a href='CrudSucursal.xhtml'> Listar Sucursal</a>
-                                <a href='index.xhtml'> Inicio</a>
-                            </h:form>
-                        </div><!-- /.container -->
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-    </h:body>
+                    <a href='CrudSucursal.xhtml'> Listar Sucursal</a>
+                    <a href='index.xhtml'> Inicio</a>
+                </h:form>
+            </div><!-- /.container -->
+        </ui:define>
+    </ui:composition>
 </html>

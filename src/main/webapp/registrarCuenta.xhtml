@@ -14,6 +14,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
     </head>
     <body>
+
         <div class="wrapper">
 
 
@@ -22,11 +23,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
                 <div class="row flex-nowrap">
                     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="collapseExample">
-                        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <div
+                            class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
 
                             <span class="fs-5 d-none d-sm-inline">Menu</span>
 
-                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                                id="menu">
                                 <li class="nav-item">
                                     <a href="index.xhtml" class="nav-link align-middle px-0">
                                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Inicio</span>
@@ -34,27 +37,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                                 </li>
                                 <li>
                                     <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Usuario</span> </a>
+                                        <i class="fs-4 bi-speedometer2"></i> <span
+                                            class="ms-1 d-none d-sm-inline">Usuario</span> </a>
                                     <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                         <li class="w-100">
-                                            <a href="registroUsuario.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ingresar Usuario</span> 1 </a>
+                                            <a href="registroUsuario.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ingresar Usuario</span> 1 </a>
                                         </li>
 
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="IngresarSucursal.xhtml" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Sucursal</span></a>
+                                        <i class="fs-4 bi-table"></i> <span
+                                            class="ms-1 d-none d-sm-inline">Sucursal</span></a>
                                 </li>
                                 <li>
                                     <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Categoria Sucursal</span></a>
+                                        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Categoria
+                                            Sucursal</span></a>
                                     <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                         <li class="w-100">
-                                            <a href="Categoria.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ingresar Categoria</span> 1</a>
+                                            <a href="Categoria.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ingresar Categoria</span> 1</a>
                                         </li>
                                         <li class="w-100">
-                                            <a href="CrudCategoria.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ver Categorias</span> 1</a>
+                                            <a href="CrudCategoria.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ver Categorias</span> 1</a>
                                         </li>
 
                                     </ul>
@@ -62,31 +71,52 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
 
                                 <li>
                                     <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Productos</span> </a>
+                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Productos</span>
+                                    </a>
                                     <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                         <li class="w-100">
-                                            <a href="IngresarProducto.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ingresar Productos</span> 1</a>
+                                            <a href="IngresarProducto.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ingresar Productos</span> 1</a>
                                         </li>
                                         <li>
-                                            <a href="CrudProductos.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Ver Productos</span> 2</a>
+                                            <a href="CrudProductos.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ver Productos</span> 2</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Facturar</span>
+                                    </a>
+                                    <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                        <li class="w-100">
+                                            <a href="IngresarFactura.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ingresar Factura</span> 1</a>
                                         </li>
                                         <li>
-                                            <a href="ListarProducto.xhtml" class="nav-link px-0"> <span class="d-none d-sm-inline">Buscar Productos</span> 2</a>
+                                            <a href="ListarFactura.xhtml" class="nav-link px-0"> <span
+                                                    class="d-none d-sm-inline">Ver Facturas</span> 2</a>
                                         </li>
+
                                     </ul>
                                 </li>
 
                             </ul>
-                            <hr></hr>
+                            <hr>
+                            </hr>
                             <div class="dropdown pb-4">
-                                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="#"
+                                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 
                                     <span class="d-none d-sm-inline mx-1">Cuenta</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                    <li><a href="login.xhtml" class="dropdown-item" >Iniciar Sesion</a></li>
-                                    <li><a href="registrarCuenta.xhtml" class="dropdown-item" >Registrarse</a></li>
-                                    
+                                    <li><a class="dropdown-item" href="#">Iniciar Sesion</a></li>
+                                    <li><a class="dropdown-item" href="#">Registrarse</a></li>
+
+
                                 </ul>
                             </div>
                         </div>
