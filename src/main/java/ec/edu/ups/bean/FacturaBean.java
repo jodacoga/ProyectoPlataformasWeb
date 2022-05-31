@@ -46,6 +46,7 @@ public class FacturaBean implements Serializable {
     @EJB
     private CuentaFacade cuentaFacade;
 
+    private int codigoFactura;
     private Date fechaFactura;
     private double subtotal;
     private double iva;
@@ -232,6 +233,15 @@ public class FacturaBean implements Serializable {
         this.nombreProducto = nombreProducto;
     }
 
+    public int getCodigoFactura() {
+        return codigoFactura;
+    }
+
+    public void setCodigoFactura(int codigoFactura) {
+        this.codigoFactura = codigoFactura;
+    }
+    
+
     public void cargarDatosUsuario() {
         System.out.println("LLega hasta aki " + cedulaPersona);
         if (cedulaPersona != null) {
@@ -318,5 +328,23 @@ public class FacturaBean implements Serializable {
         return "mensaje-exito?faces-redirect=true&texto=Se ha generado la factura";
 
     }
+     public String edit(Factura f) {
+        f.setEditable(true);
+        return null;
+    }
 
+    public String save(Factura f) {
+       facturaFacade.edit(f);
+        facturas= facturaFacade.findAll();
+        f.setEditable(false);
+        return null;
+    }
+
+    public String verDetalles(int codigo) {
+		return "detalles?faces-redirect=true&codigo=" + codigo;
+	}
+    public void loadDetalles() {
+                Factura f=facturaFacade.getCodigo(codigoFactura);
+		detalles = f.getFacturadetalle();
+	}
 }

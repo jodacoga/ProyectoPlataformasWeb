@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +54,9 @@ public class Factura implements Serializable{
     
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedidoFactura")
     private Pedido pedidoFactura;
+    
+    @Transient
+    private boolean editable;
 
     public Factura() {
     }
@@ -147,6 +151,14 @@ public class Factura implements Serializable{
 
     public void setCuentaFactura(Cuenta cuentaFactura) {
         this.cuentaFactura = cuentaFactura;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     
