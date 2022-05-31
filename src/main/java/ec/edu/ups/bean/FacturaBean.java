@@ -310,7 +310,7 @@ public class FacturaBean implements Serializable {
         for (int i = 0; i < detalles.size(); i++) {
             detalles.get(i).setFacturadetalle(factura);
             Producto p=productoFacade.getProductoByName(detalles.get(i).getDescripcion());
-            producto.setStock(producto.getStock()-detalles.get(i).getCantidad());
+            p.setStock(p.getStock()-detalles.get(i).getCantidad());
             detalleFacade.edit(detalles.get(i));
             productoFacade.edit(p);
         }
