@@ -14,8 +14,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 /**
  *
@@ -40,10 +42,13 @@ public class Cuenta implements Serializable {
     private Usuario usuario;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
-    private Set<TarjetaCredito> tarjetaC = new HashSet<TarjetaCredito>();
+    private List<TarjetaCredito> tarjetaC = new ArrayList<TarjetaCredito>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaPedido")
-    private Set<Pedido> pedido = new HashSet<Pedido>();
+    private List<Pedido> pedido = new ArrayList<Pedido>();
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaFactura")
+    private List<Factura> factura = new ArrayList<Factura>();
 
     public Cuenta() {
         this("","",null);
@@ -79,21 +84,30 @@ public class Cuenta implements Serializable {
         this.usuario = usuario;
     }
 
-    public Set<TarjetaCredito> getTarjetaC() {
+    public int getCodigoCuenta() {
+        return codigoCuenta;
+    }
+
+    public void setCodigoCuenta(int codigoCuenta) {
+        this.codigoCuenta = codigoCuenta;
+    }
+
+    public List<TarjetaCredito> getTarjetaC() {
         return tarjetaC;
     }
 
-    public void setTarjetaC(Set<TarjetaCredito> tarjetaC) {
+    public void setTarjetaC(List<TarjetaCredito> tarjetaC) {
         this.tarjetaC = tarjetaC;
     }
 
-    public Set<Pedido> getPedido() {
+    public List<Pedido> getPedido() {
         return pedido;
     }
 
-    public void setPedido(Set<Pedido> pedido) {
+    public void setPedido(List<Pedido> pedido) {
         this.pedido = pedido;
     }
+
 
     public boolean isEditable() {
         return editable;
@@ -102,6 +116,16 @@ public class Cuenta implements Serializable {
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
+
+    public List<Factura> getFactura() {
+        return factura;
+    }
+
+    public void setFactura(List<Factura> factura) {
+        this.factura = factura;
+    }
+
+    
 
     @Override
     public String toString() {
