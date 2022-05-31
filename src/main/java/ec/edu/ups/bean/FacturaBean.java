@@ -8,6 +8,7 @@ import ec.edu.ups.entidades.Cuenta;
 import ec.edu.ups.entidades.DetalleFactura;
 import ec.edu.ups.entidades.Factura;
 import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.TipoPago;
 import ec.edu.ups.entidades.Usuario;
 import ec.edu.ups.facade.CuentaFacade;
 import ec.edu.ups.facade.DetalleFacturaFacade;
@@ -20,7 +21,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -230,7 +231,6 @@ public class FacturaBean implements Serializable {
     public void setNombreProducto(String nombreProducto) {
         this.nombreProducto = nombreProducto;
     }
-    
 
     public void cargarDatosUsuario() {
         System.out.println("LLega hasta aki " + cedulaPersona);
@@ -267,11 +267,56 @@ public class FacturaBean implements Serializable {
     public void calcularTotalProducto() {
         if (cantidad < producto.getStock()) {
             if (producto.getPrecio() != 0) {
+                precioUnitario = producto.getPrecio();
                 precioTotal = producto.getPrecio() * cantidad;
 
             }
 
         }
+    }
+
+    public void addDetalle() {
+
+        DetalleFactura detalle = new DetalleFactura();
+        detalle.setDescripcion(nombreProducto);
+        detalle.setPrecioUnitario(precioUnitario);
+        detalle.setCantidad(cantidad);
+        detalle.setPrecioTotal(precioTotal);
+        System.out.println("PRECIO ********** ** : " + precioTotal);
+        detalles.add(detalle);
+
+        for (int i = 0; i < detalles.size(); i++) {
+            subtotal = subtotal + detalles.get(i).getPrecioTotal();
+            System.out.println("*******TOTAL *** : " + subtotal);
+        }
+        iva = (subtotal * 0.12) + subtotal;
+        total = Math.round((subtotal + iva)*100)/100;
+
+    }
+
+    public void add() {
+        Factura factura = new Factura();
+        factura.setFechaFactura(new Date());
+        factura.setCuentaFactura(cuenta);
+        factura.setUsuarioFactura(usuario);
+        factura.setFacturadetalle(detalles);
+        factura.setEstadoFactura(true);
+        factura.setTipoPago(new TipoPago(1,"Corriente"));
+        factura.setSubtotal(subtotal);
+        factura.setIva(iva);
+        factura.setTotal(total);
+        facturaFacade.create(factura);
+        
+        for (int i = 0; i < detalles.size(); i++) {
+            detalles.get(i).setFacturadetalle(factura);
+            Producto p=productoFacade.getProductoByName(detalles.get(i).getDescripcion());
+            producto.setStock(producto.getStock()-detalles.get(i).getCantidad());
+            detalleFacade.edit(detalles.get(i));
+            productoFacade.edit(p);
+        }
+        
+        
+
     }
 
 }

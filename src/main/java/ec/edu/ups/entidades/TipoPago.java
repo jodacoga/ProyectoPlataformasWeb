@@ -36,6 +36,12 @@ public class TipoPago {
         this.descripcion = descripcion;
     }
 
+    public TipoPago(int codigoTipo, String descripcion) {
+        this.codigoTipo = codigoTipo;
+        this.descripcion = descripcion;
+    }
+    
+
     public int getCodigoTipo() {
         return codigoTipo;
     }

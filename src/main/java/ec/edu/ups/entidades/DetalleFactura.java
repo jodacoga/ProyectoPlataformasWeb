@@ -107,7 +107,11 @@ public class DetalleFactura implements Serializable{
 
     @Override
     public String toString() {
-        return "DetalleFactura{" + "codigoDetalle=" + codigoDetalle + ", descripcion=" + descripcion + ", precioUnitario=" + precioUnitario + ", cantidad=" + cantidad + ", precioTotal=" + precioTotal + ", producto=" + producto + ", facturadetalle=" + facturadetalle + '}';
+        String u = ",facturadetalle==(null)";
+        if (this.facturadetalle != null) {
+            u = ", facturadetalle=(" + this.facturadetalle.getCodigoFactura() + ")";
+        }
+        return "DetalleFactura{" + "codigoDetalle=" + codigoDetalle + ", descripcion=" + descripcion + u + '}';
     }
     
     

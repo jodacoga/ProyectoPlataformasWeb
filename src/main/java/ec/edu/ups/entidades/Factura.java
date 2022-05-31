@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -153,7 +153,19 @@ public class Factura implements Serializable{
 
     @Override
     public String toString() {
-        return "Factura{" + "codigoFactura=" + codigoFactura + ", fechaFactura=" + fechaFactura + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + ", estadoFactura=" + estadoFactura + ", usuarioFactura=" + usuarioFactura + ", tipoPago=" + tipoPago + ", cuenta=" + cuentaFactura + ", facturadetalle=" + facturadetalle + ", pedidoFactura=" + pedidoFactura + '}';
+        String u = ",usuarioFactura==(null)";
+        if (this.usuarioFactura != null) {
+            u = ", usuarioFactura=(" + this.usuarioFactura.getCedula() + ")";
+        }
+        String d = ",tipoPago==(null)";
+        if (this.tipoPago != null) {
+            d = ", tipoPago=(" + this.tipoPago.getCodigoTipo() + ")";
+        }
+         String e = ",cuenta==(null)";
+        if (this.cuentaFactura != null) {
+            e = ", cuenta=(" + this.cuentaFactura.getCodigoCuenta() + ")";
+        }
+        return "Factura{" + "codigoFactura=" + codigoFactura + ", fechaFactura=" + fechaFactura + ", subtotal=" + subtotal + ", iva=" + iva + ", total=" + total + ", estadoFactura=" + estadoFactura + u + d + e + ", facturadetalle=" + facturadetalle + ", pedidoFactura=" + pedidoFactura + '}';
     }
     
     
