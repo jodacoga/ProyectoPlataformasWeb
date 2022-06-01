@@ -29,6 +29,7 @@ public class LoginBean implements Serializable {
     private Cuenta cuenta;
     private String contra;
     private String correo;
+    private String nombreUsu;
 
     @EJB
     private CuentaFacade cuentaFacade;
@@ -63,8 +64,18 @@ public class LoginBean implements Serializable {
         this.cuenta = cuenta;
     }
 
+    public String getNombreUsu() {
+        return nombreUsu;
+    }
+
+    public void setNombreUsu(String nombreUsu) {
+        this.nombreUsu = nombreUsu;
+    }
+
+    
     public String login() {
         cuenta = cuentaFacade.getCuentaCorreo(correo);
+        nombreUsu=cuenta.getUsuario().getNombre();
         System.out.println(cuenta.toString());
         if (cuenta == null || !cuenta.getContrasena().equals(contra)) {
             return "login?faces-redirect=true";

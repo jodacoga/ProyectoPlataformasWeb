@@ -12,44 +12,51 @@
 
         </h:head>
         <ui:define name="content">
-            <h:form class="container">
-                <br></br>        <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Cedula </span>
-                    <h:inputText  id="cedula"
-                                  value="#{usuarioBean.cedula}"
-                                  requiredMessage="Este campo es requerido">
-                        <f:validateRequired />
-                    </h:inputText>
+            <div class="cars">
+                <div class="card-body">
+                    <h:form styleClass="container">
+                        <br></br>        <div class="input-group mb-3">
+                            <h:outputLabel styleClass="control-label" value="Cedula" />
+                            <br />
+                            <h:inputText  id="cedula"
+                                          styleClass="form-control col-md-3"
+                                          value="#{usuarioBean.cedula}"
+                                          requiredMessage="Este campo es requerido">
+                                <f:validateRequired />
+                            </h:inputText>
 
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <h:outputLabel styleClass="control-label" value="Nombre" />
+                            <br />
+                            <h:inputText styleClass="form-control col-md-3" id="nombre" value="#{usuarioBean.nombre}"/>
+
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <h:outputLabel styleClass="control-label" value="Apellido" />
+                            <br />
+                            <h:inputText styleClass="form-control col-md-3" id="apellido" value="#{usuarioBean.apellido}"/>
+                        </div>
+
+
+                        <div class="input-group mb-3">
+
+                            <span >Seleccione Tipo Usuario</span>
+                            <h:selectOneMenu styleClass="form-select form-select-sm" value="#{usuarioBean.tipo}">
+                                <f:selectItems value="#{usuarioBean.listaTipo}" />
+                            </h:selectOneMenu> 
+                        </div>
+
+                        <div>
+                            <br></br><h:commandButton  styleClass="btn btn-primary" value="Crear Usuario"  action="#{usuarioBean.add()}"/>
+                            <a href="CrudPersona.xhtml">Listar Cliente</a>
+                            <a href="IngresarSucursal.xhtml">Ingresar Sucursal</a>
+                        </div>
+                    </h:form>
                 </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon2">Nombre</span>
-                    <h:inputText id="nombre" value="#{usuarioBean.nombre}"/>
-
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">Apellido</span>
-                    <h:inputText id="apellido" value="#{usuarioBean.apellido}"/>
-                </div>
-
-
-                <div class="input-group mb-3">
-
-                    <span >Seleccione Tipo Usuario</span>
-                    <h:selectOneMenu class="form-select form-select-sm" value="#{usuarioBean.tipo}">
-                        <f:selectItems value="#{usuarioBean.listaTipo}" />
-                    </h:selectOneMenu> 
-                </div>
-
-                <div>
-                    <br></br><h:commandButton  class="btn btn-primary" value="Crear Usuario"  action="#{usuarioBean.add()}"/>
-                    <a href="CrudPersona.xhtml">Listar Cliente</a>
-                    <a href="IngresarSucursal.xhtml">Ingresar Sucursal</a>
-                </div>
-            </h:form>
-
+            </div>
         </ui:define>
     </ui:composition>
 </html>
