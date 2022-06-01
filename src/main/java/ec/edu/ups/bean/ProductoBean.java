@@ -10,7 +10,6 @@ import ec.edu.ups.facade.CategoriaFacade;
 import ec.edu.ups.facade.ProductoFacade;
 import ec.edu.ups.facade.SucursalFacade;
 import jakarta.annotation.PostConstruct;
-
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;

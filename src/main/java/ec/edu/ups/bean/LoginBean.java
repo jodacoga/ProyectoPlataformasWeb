@@ -7,6 +7,7 @@ package ec.edu.ups.bean;
 import ec.edu.ups.entidades.Cuenta;
 import ec.edu.ups.facade.CuentaFacade;
 import ec.edu.ups.util.SessionUtils;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
@@ -25,12 +26,18 @@ public class LoginBean implements Serializable {
 
     private static final long serialVersionUID = 1094801825228386363L;
 
-    private Cuenta cuenta = new Cuenta();
+    private Cuenta cuenta;
     private String contra;
     private String correo;
 
     @EJB
     private CuentaFacade cuentaFacade;
+
+    @PostConstruct
+    public void init() {
+        cuenta = new Cuenta();
+        System.out.println("PILAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS");
+    }
 
     public String getCorreo() {
         return correo;
@@ -57,7 +64,9 @@ public class LoginBean implements Serializable {
     }
 
     public String login() {
-        this.cuenta = cuentaFacade.getCuentaCorreo(correo);
+        System.out.println("INGRESANNNNNNNNNNDO LOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGINNNNNNNNNNNNNNN");
+        cuenta = cuentaFacade.getCuentaCorreo(correo);
+        System.out.println(cuenta.toString());
         if (cuenta == null || !cuenta.getContrasena().equals(contra)) {
             return "login?faces-redirect=true";
         }
@@ -66,10 +75,10 @@ public class LoginBean implements Serializable {
         session.setAttribute("correo", correo);
 
         if (this.cuenta.getUsuario().getTipoUsuario().getDescripcion().equalsIgnoreCase("Administrador")) {
-            return "plantilla?faces-redirect=true";
+            return "index?faces-redirect=true";
         }
         if (this.cuenta.getUsuario().getTipoUsuario().getDescripcion().equalsIgnoreCase("Empleado")) {
-            return "plantillaEmpleado?faces-redirect=true";
+            return "indexEmpleado?faces-redirect=true";
         }
         System.out.println("No hay rol");
         return "login?faces-redirect=true";
