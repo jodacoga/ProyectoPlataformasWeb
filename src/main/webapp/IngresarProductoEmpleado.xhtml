@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="./plantillaEmpleado.xhtml">
+        <h:head>
+            <title>Producto</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+
+        </h:head>
+        <ui:define name="content">
+            <div class="container">
+
+                            <h:form class="container">
+                                <h4>Ingresar Datos Producto</h4>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">Nombre Producto: </span>
+
+                                    <h:inputText id="nombre" value="#{productoBean.nombre}"/> 
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon2">Descripcion Producto: </span>
+
+                                    <h:inputText id="descripcion" value="#{productoBean.descripcion}"/>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon3">Precio: </span>
+
+                                    <h:inputText id="precio" value="#{productoBean.precio}"/>
+                                </div>
+
+                                <div class="input-group mb-3">
+
+                                    <span class="input-group-text" id="basic-addon4">Stock: </span>
+                                    <h:inputText id="stock" value="#{productoBean.stock}"/>
+                                </div>
+
+                                <div class="input-group mb-3">
+
+                                    <span class="input-group-text" id="basic-addon5">Seleccione Categoria </span>
+                                    <h:selectOneMenu class="form-select form-select-sm" value="#{productoBean.nombreCategoria}">
+                                        <f:selectItems value="#{productoBean.listaCategoria}" />
+                                    </h:selectOneMenu> 
+                                </div>
+
+                                <div class="input-group mb-3">
+
+                                    <span class="input-group-text" id="basic-addon5">Seleccione Sucursal </span>
+                                    <h:selectOneMenu class="form-select form-select-sm" value="#{productoBean.nombreSucursal}">
+                                        <f:selectItems value="#{productoBean.listaSucursales}" />
+                                    </h:selectOneMenu> 
+                                </div>
+
+
+
+                                <h:commandButton class="btn btn-primary" value="Ingresar Producto"  action="#{productoBean.addPro()}"/>
+                                <a href='CrudProductos.xhtml'> Listar Productos</a>
+                            </h:form>
+
+                        </div><!-- /.container -->
+        </ui:define>
+    </ui:composition>
+</html>
