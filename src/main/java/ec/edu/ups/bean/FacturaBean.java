@@ -352,6 +352,44 @@ public class FacturaBean implements Serializable {
         return "mensaje-exito?faces-redirect=true&texto=Se ha generado la factura";
 
     }
+    public String addFac() {
+        Factura factura = new Factura();
+        factura.setFechaFactura(new Date());
+        factura.setCuentaFactura(cuenta);
+        factura.setUsuarioFactura(usuario);
+        factura.setFacturadetalle(detalles);
+        factura.setEstadoFactura(true);
+        factura.setTipoPago(new TipoPago(1,"Corriente"));
+        factura.setSubtotal(subtotal);
+        factura.setIva(iva);
+        factura.setTotal(total);
+        facturaFacade.create(factura);
+        
+        for (int i = 0; i < detalles.size(); i++) {
+            detalles.get(i).setFacturadetalle(factura);
+            Producto p=productoFacade.getProductoByName(detalles.get(i).getDescripcion());
+            p.setStock(p.getStock()-detalles.get(i).getCantidad());
+            detalleFacade.edit(detalles.get(i));
+            productoFacade.edit(p);
+            
+        }
+        cuenta=new Cuenta();
+        usuario=new Usuario();
+        detalles=new ArrayList<>();
+        subtotal=0;
+        iva=0;
+        total=0;
+        producto=new Producto();
+        cantidad=0;
+        nombreProducto="";
+        numeroCuenta=0;
+        cedulaPersona="";
+        precioTotal=0;
+        facturas=facturaFacade.findAll();
+        
+        return "mensaje-exitoEmpleado?faces-redirect=true&texto=Se ha generado la factura";
+
+    }
      public String edit(Factura f) {
         f.setEditable(true);
         return null;
@@ -370,5 +408,8 @@ public class FacturaBean implements Serializable {
     public void loadDetalles() {
                 Factura f=facturaFacade.getCodigo(codigoFactura);
 		detallesvista = f.getFacturadetalle();
+	}
+     public String verDetallesEmpleado(int codigo) {
+		return "detallesEmpleado?faces-redirect=true&codigo=" + codigo;
 	}
 }
