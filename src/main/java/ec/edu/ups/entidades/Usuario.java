@@ -17,11 +17,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -39,7 +36,7 @@ public class Usuario implements Serializable {
     private String nombre;
     private String apellido;
 
-    private LocalDate fechaNacimiento;
+    private Date fechaNacimiento;
 
     @Transient
     private boolean editable;
@@ -55,14 +52,14 @@ public class Usuario implements Serializable {
     private List<Factura> facturaUsuario = new ArrayList<Factura>();
 
     public Usuario() {
-        this("","","");
+     
     }
 
-    public Usuario(String nombre, String apellido, String cedula) {
+    public Usuario(String nombre, String apellido, String cedula,Date fechaNacimiento) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
-        this.fechaNacimiento = java.time.LocalDate.now();
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getNombre() {
@@ -89,11 +86,11 @@ public class Usuario implements Serializable {
         this.cedula = cedula;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
