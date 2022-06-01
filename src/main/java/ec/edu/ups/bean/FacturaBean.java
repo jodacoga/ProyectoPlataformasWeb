@@ -66,6 +66,7 @@ public class FacturaBean implements Serializable {
     Producto producto;
     Cuenta cuenta;
     List<DetalleFactura> detalles = new ArrayList<>();
+    List<DetalleFactura> detallesvista = new ArrayList<>();
     List<Factura> facturas = new ArrayList<>();
 
     @PostConstruct
@@ -240,6 +241,15 @@ public class FacturaBean implements Serializable {
     public void setCodigoFactura(int codigoFactura) {
         this.codigoFactura = codigoFactura;
     }
+
+    public List<DetalleFactura> getDetallesvista() {
+        return detallesvista;
+    }
+
+    public void setDetallesvista(List<DetalleFactura> detallesvista) {
+        this.detallesvista = detallesvista;
+    }
+    
     
 
     public void cargarDatosUsuario() {
@@ -300,7 +310,7 @@ public class FacturaBean implements Serializable {
             System.out.println("*******TOTAL *** : " + subtotal);
         }
         iva = (subtotal * 0.12);
-        total = Math.round((subtotal + iva)*100)/100;
+        total = (subtotal + iva);
 
     }
 
@@ -323,7 +333,21 @@ public class FacturaBean implements Serializable {
             p.setStock(p.getStock()-detalles.get(i).getCantidad());
             detalleFacade.edit(detalles.get(i));
             productoFacade.edit(p);
+            
         }
+        cuenta=new Cuenta();
+        usuario=new Usuario();
+        detalles=new ArrayList<>();
+        subtotal=0;
+        iva=0;
+        total=0;
+        producto=new Producto();
+        cantidad=0;
+        nombreProducto="";
+        numeroCuenta=0;
+        cedulaPersona="";
+        precioTotal=0;
+        facturas=facturaFacade.findAll();
         
         return "mensaje-exito?faces-redirect=true&texto=Se ha generado la factura";
 
@@ -345,6 +369,6 @@ public class FacturaBean implements Serializable {
 	}
     public void loadDetalles() {
                 Factura f=facturaFacade.getCodigo(codigoFactura);
-		detalles = f.getFacturadetalle();
+		detallesvista = f.getFacturadetalle();
 	}
 }
