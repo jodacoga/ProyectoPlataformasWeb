@@ -68,7 +68,6 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
     }
 
     public Cuenta getCuentaCorreo(String correo) {
-        System.out.println("Entraannnnnnnnnnndoooooooooooo  de waroooooooooooooooooooooooossssss");
         String jpql = "SELECT c FROM Cuenta c WHERE c.correo = '" + correo + "'";
         Cuenta cuenta = (Cuenta) em.createQuery(jpql).getSingleResult();
         return cuenta;

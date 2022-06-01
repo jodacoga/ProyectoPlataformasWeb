@@ -64,7 +64,6 @@ public class LoginBean implements Serializable {
     }
 
     public String login() {
-        System.out.println("INGRESANNNNNNNNNNDO LOGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGINNNNNNNNNNNNNNN");
         cuenta = cuentaFacade.getCuentaCorreo(correo);
         System.out.println(cuenta.toString());
         if (cuenta == null || !cuenta.getContrasena().equals(contra)) {
