@@ -299,7 +299,7 @@ public class FacturaBean implements Serializable {
             subtotal = subtotal + detalles.get(i).getPrecioTotal();
             System.out.println("*******TOTAL *** : " + subtotal);
         }
-        iva = (subtotal * 0.12) + subtotal;
+        iva = (subtotal * 0.12);
         total = Math.round((subtotal + iva)*100)/100;
 
     }
