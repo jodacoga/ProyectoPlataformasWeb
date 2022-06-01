@@ -48,7 +48,8 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
 
         return res;
     }
-  public void guardarUsuario(String nombre, String apellido, String cedula, LocalDate fecha, String tipoUsu) throws Exception {
+    
+    public void guardarUsuario(String nombre, String apellido, String cedula, LocalDate fecha, String tipoUsu) throws Exception {
         Usuario usu = new Usuario();
         usu.setCedula(cedula);
         usu.setApellido(apellido);

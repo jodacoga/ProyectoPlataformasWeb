@@ -4,7 +4,7 @@
  */
 package ec.edu.ups.bean;
 
-import ec.edu.ups.entidades.TipoUsuario;
+import ec.edu.ups.entidades.Cuenta;
 import ec.edu.ups.entidades.Usuario;
 import ec.edu.ups.facade.TipoUsuarioFacade;
 import ec.edu.ups.facade.UsuarioFacade;
@@ -40,7 +40,10 @@ public class UsuarioBean implements Serializable {
     private String cedula;
     private LocalDate fechaNacimiento;
     private String tipo;
-
+    
+    Usuario usuario;
+    Cuenta cuenta;
+    
     List<String> list = new ArrayList<>();
     List<Usuario> usuarios = new ArrayList<>();
 
@@ -76,8 +79,6 @@ public class UsuarioBean implements Serializable {
         return list;
     }
     
- 
-
     public UsuarioFacade getUsuarioFacade() {
         return usuarioFacade;
     }
@@ -125,13 +126,38 @@ public class UsuarioBean implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+    
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
+    }
+    
+    public void cargarDatosUsuario() {
+        System.out.println("LLega hasta aki " + cedula);
+        if (cedula != null) {
+            System.out.println("la cedula es " + cedula);
+            usuario = usuarioFacade.getUsuarioCedula(cedula);
+            System.out.println("El Usuario es: !!!!  " + usuario.getCedula());
+        }
     }
 
 }
