@@ -17,14 +17,14 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
 
     @PersistenceContext(name = "PlataformasWeb")
     private EntityManager em;
-    
+
     @EJB
     private UsuarioFacade usuarioFacade;
-    
-    public CuentaFacade(){
+
+    public CuentaFacade() {
         super(Cuenta.class);
     }
-    
+
     public void guardarCuenta(String correo, String contrasena, String cedulaCliente) throws Exception {
         Cuenta c = new Cuenta();
         c.setCorreo(correo);
@@ -42,16 +42,16 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
 
     public List<String> getUsersCedula(String cedula) {
 
-        String jpql1 = "SELECT u.codigo FROM usuario u where u.cedula="+"'"+cedula+"'";
+        String jpql1 = "SELECT u.codigo FROM usuario u where u.cedula=" + "'" + cedula + "'";
         List<String> res = em.createQuery(jpql1).getResultList();
 
         return res;
     }
-    
+
     //Para Login
     public List<String> getUsersCorreo(String correo) {
 
-        String jpql1 = "SELECT u.codigo FROM usuario u where u.correo="+"'"+correo+"'";
+        String jpql1 = "SELECT u.codigo FROM usuario u where u.correo=" + "'" + correo + "'";
         List<String> res = em.createQuery(jpql1).getResultList();
         return res;
     }
@@ -61,9 +61,20 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
         return em;
     }
 
-     public Cuenta getCuentaNumero(int numero) {
+    public Cuenta getCuentaNumero(int numero) {
         String jpql = "SELECT u FROM Cuenta u WHERE u.codigoCuenta = " + numero;
         Cuenta cuenta = (Cuenta) em.createQuery(jpql).getSingleResult();
         return cuenta;
+    }
+
+    public Cuenta getCuentaCorreo(String correo) {
+        try {
+            String jpql = "SELECT u FROM Cuenta u WHERE u.correo = " + "'" + correo + "'";
+            Cuenta cuenta = (Cuenta) em.createQuery(jpql).getSingleResult();
+            return cuenta;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
     }
 }
