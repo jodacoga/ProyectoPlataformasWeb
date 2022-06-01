@@ -14,12 +14,12 @@
         <ui:define name="content">
             <h:form class="container">
                 <br></br>        <div class="input-group mb-3">
-                    <label for="txtNumeroCedula">Numero de cedula:</label>
+                    <label for="txtNumeroCedula">Ingrese la cedula:</label>
                     <h:inputText requiredMessage="Este campo es requerido"
-                                value="#{usuarioBean.cedula}" class="input-group-text"
-                                id="txtNumeroCedula">
+                                 value="#{facturaBean.cedulaPersona}" class="input-group-text"
+                                 id="txtNumeroCedula">
                         <f:ajax execute="txtNumeroCedula" render="txtNombrePer txtApellidoPer"
-                                listener="#{usuarioBean.cargarDatosUsuario()}" />
+                                listener="#{facturaBean.cargarDatosUsuario()}" />
                         <f:validateRequired />
                     </h:inputText>
                     <h:message for="txtNumeroCedula"
@@ -29,27 +29,27 @@
                 <div class="input-group mb-3">
                     <label for="txtNombrePer">Nombre del usuario:</label>
                     <h:outputText class="input-group-text" id="txtNombrePer"
-                                  value="#{usuarioBean.nombre}" />
+                                  value="#{facturaBean.usuario.nombre}" />
                 </div>
                 <div class="input-group mb-3">
                     <label for="txtApellidoPer">Apellido del usuario:</label>
-                    <h:outputText value="#{usuarioBean.apellido}" class="input-group-text"
+                    <h:outputText value="#{facturaBean.usuario.apellido}" class="input-group-text"
                                   id="txtApellidoPer" />
                 </div>
                 <div class="input-group mb-3">
-                    <label for="txtCorreoPer">Correo del usuario:</label>
-                    <h:inputText value="#{cuentaBean.correo}" class="input-group-text"
-                                  id="txtCorreoPer" />
+                    <span class="input-group-text" id="basic-addon2">Correo</span>
+                    <h:inputText id="nombre" value="#{cuentaBean.correo}"/>
+
                 </div>
+
                 <div class="input-group mb-3">
-                    <label for="txtContrasenaPer">Contrasena del usuario:</label>
-                    <h:inputText value="#{cuentaBean.contrasena}" class="input-group-text"
-                                  id="txtContrasenaPer" />
+                    <span class="input-group-text" id="basic-addon3">Contrasena</span>
+                    <h:inputText id="apellido" value="#{cuentaBean.contrasena}"/>
                 </div>
                 
                 <a href='registroUsuario.xhtml'> Agregar Usuario</a>    
                 <div>
-                    <br></br><h:commandButton  class="btn btn-primary" value="Crear Cuenta"  action="#{cuentaBean.add()}"/>
+                    <br></br><h:commandButton  class="btn btn-primary" value="Crear Cuenta" />
                     
                 </div>
             </h:form>
