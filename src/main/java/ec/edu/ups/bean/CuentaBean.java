@@ -8,6 +8,7 @@ import ec.edu.ups.entidades.Cuenta;
 import ec.edu.ups.entidades.Usuario;
 import ec.edu.ups.facade.CuentaFacade;
 import ec.edu.ups.facade.UsuarioFacade;
+import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
@@ -24,33 +25,29 @@ import java.util.List;
 @Named
 @SessionScoped
 public class CuentaBean implements Serializable{
-        private static final long serialVersionUID = 1L;
+    
+    private static final long serialVersionUID = 1L;
         
-        @EJB
-        private CuentaFacade cuentaFacade;
-        @EJB
-        private UsuarioFacade usuarioFacade;
+    @EJB
+    private CuentaFacade cuentaFacade;
+    @EJB
+    private UsuarioFacade usuarioFacade;
         
-        private int codigo;
-        private String correo;
-        private String contrasena;
+    private int codigo;
+    private String correo;
+    private String contrasena;
         
-        private String cedulaCliente;
-        //private String nombre;
-        //private String apellido;
-        Usuario usuario = new Usuario();
-        List<String> list = new ArrayList<>();
-        Cuenta cuenta = new Cuenta();
-     
-//        public Usuario codigoUsuario(){
-//            codigo = (Usuario) facadeCuenta.getUsersCedula(cedula);
-//            if (codigo == null){
-//                System.out.println("No existe");
-//            }else{
-//                System.out.println("Creado Exitoso");
-//            }
-//            return null;
-//        }
+    private String cedulaCliente;
+        
+    Usuario usuario = new Usuario();
+    List<String> list = new ArrayList<>();
+    Cuenta cuenta = new Cuenta();
+    List<Cuenta> cuentas = new ArrayList<>();
+    
+    @PostConstruct
+    public void init() {
+        cuentas = cuentaFacade.findAll();
+    }
         
     public String addCuenta() throws Exception{
         usuario = usuarioFacade.getUsuarioCedula(cedulaCliente);
@@ -132,6 +129,14 @@ public class CuentaBean implements Serializable{
 
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public List<Cuenta> getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(List<Cuenta> cuentas) {
+        this.cuentas = cuentas;
     }
 
     public void cargarDatosUsuario() {
