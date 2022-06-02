@@ -13,161 +13,165 @@
         </h:head>
         <ui:define name="content">
             <div class="container">
-                 <h:form class="container">
-                     <h3 class="text-center">Facturar</h3>
-                                <div class="row">                                   
-                                    <div class="col-md-6">
+                <h:form class="container">
+                    <h3 class="text-center">Facturar</h3>
+                    <div class="row">                                   
+                        <div class="col-md-6">
 
-                                        <h4>Datos Cliente Factura</h4>
-                                        <div class="input-group mb-3">
-                                            <label for="txtNumeroCedula">Número de cedula a Facturar:</label>
-                                            <h:inputText requiredMessage="Este campo es requerido"
-                                                         value="#{facturaBean.cedulaPersona}" class="input-group-text"
-                                                         id="txtNumeroCedula">
-                                                <f:ajax execute="txtNumeroCedula" render="txtNombrePer txtApellidoPer"
-                                                        listener="#{facturaBean.cargarDatosUsuario()}" />
-                                                <f:validateRequired />
-                                            </h:inputText>
-                                            <h:message for="txtNumeroCedula"
-                                                       style="color:red; margin-top: 0.5rem; display: block" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtNombrePer">Nombre del usuario:</label>
-                                            <h:outputText class="input-group-text" id="txtNombrePer"
-                                                          value="#{facturaBean.usuario.nombre}" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtApellidoPer">Apellido del usuario:</label>
-                                            <h:outputText value="#{facturaBean.usuario.apellido}" class="input-group-text"
-                                                          id="txtApellidoPer" />
-                                        </div>
+                            <h4>Datos Cliente Factura</h4>
+                            <div class="input-group mb-3">
+                                <label for="txtNumeroCedula">Número de cedula a Facturar:</label>
+                                <h:inputText requiredMessage="Este campo es requerido"
+                                             value="#{facturaBean.cedulaPersona}" class="input-group-text"
+                                             id="txtNumeroCedula">
+                                    <f:ajax execute="txtNumeroCedula" render="txtNombrePer txtApellidoPer"
+                                            listener="#{facturaBean.cargarDatosUsuario()}" />
+                                    <f:validateRequired />
+                                </h:inputText>
+                                <h:message for="txtNumeroCedula"
+                                           style="color:red; margin-top: 0.5rem; display: block" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtNombrePer">Nombre del usuario:</label>
+                                <h:outputText class="input-group-text" id="txtNombrePer"
+                                              value="#{facturaBean.usuario.nombre}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtApellidoPer">Apellido del usuario:</label>
+                                <h:outputText value="#{facturaBean.usuario.apellido}" class="input-group-text"
+                                              id="txtApellidoPer" />
+                            </div>
 
-                                        <a href='registroUsuario.xhtml'> Agregar Usuario</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4>Datos Cuenta Factura</h4>
-                                        <div class="input-group mb-3">
-                                            <label for="txtNumeroCuenta">Número de cuenta de la Factura:</label>
-                                            <h:inputText requiredMessage="Este campo es requerido"
-                                                         value="#{facturaBean.numeroCuenta}" class="input-group-text"
-                                                         id="txtNumeroCuenta">
-                                                <f:ajax execute="txtNumeroCuenta"
-                                                        render="txtCorreo txtNombreCue txtApellidoCue"
-                                                        listener="#{facturaBean.cargarDatosCuenta()}" />
-                                                <f:validateRequired />
-                                            </h:inputText>
-                                            <h:message for="txtNumeroCuenta"
-                                                       style="color:red; margin-top: 0.5rem; display: block" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtCorreo">Correo del Usuario de la Cuenta</label>
-                                            <h:outputText class="input-group-text" id="txtCorreo"
-                                                          value="#{facturaBean.cuenta.correo}" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtNombreCue">Nombre del usuario de la Cuenta:</label>
-                                            <h:outputText value="#{facturaBean.cuenta.usuario.nombre}"
-                                                          class="input-group-text" id="txtNombreCue" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtApellidoCue">Apellido del usuario de la Cuenta:</label>
-                                            <h:outputText value="#{facturaBean.cuenta.usuario.apellido}"
-                                                          class="input-group-text" id="txtApellidoCue" />
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <h4>Detalles de Factura</h4>
-                                <h:dataTable class="table table-striped" value="#{facturaBean.detalles}" var="o">
-
-                                    <h:column>
-                                        <f:facet name="header">Descripcion</f:facet>
-                                            #{o.descripcion}
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Precio Unitario</f:facet>
-                                            #{o.precioUnitario}
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Cantidad</f:facet>
-                                            #{o.cantidad}
-                                    </h:column>
-
-                                    <h:column>
-                                        <f:facet name="header">Precio Total</f:facet>
-                                            #{o.precioTotal}
-                                    </h:column>
-
-                                </h:dataTable>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>Ingresar Producto a Facturar</h5>
-                                        <div class="input-group mb-3">
-                                            <label for="txtProducto">Ingrese nombre Producto:</label>
-                                            <h:inputText requiredMessage="Este campo es requerido"
-                                                         value="#{facturaBean.nombreProducto}" class="input-group-text" id="txtProducto">
-                                                <f:ajax execute="txtProducto" render="txtPrecioPro txtStock"
-                                                        listener="#{facturaBean.cargarDatosProducto()}" />
-                                                <f:validateRequired />
-                                            </h:inputText>
-                                            <h:message for="txtProducto" style="color:red; margin-top: 0.5rem; display: block" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtPrecioPro">Precio Unitario:</label>
-                                            <h:outputText class="input-group-text" id="txtPrecioPro"
-                                                          value="#{facturaBean.producto.precio}" />
-                                        </div>
-                                         <div class="input-group mb-3">
-                                            <label for="txtStock">Stock Producto:</label>
-                                            <h:outputText class="input-group-text" id="txtStock"
-                                                          value="#{facturaBean.producto.stock}" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtCan">Cantidad:</label>
-                                            <h:inputText requiredMessage="Este campo es requerido" value="#{facturaBean.cantidad}"
-                                                         class="input-group-text" id="txtCan">
-                                                <f:ajax execute="txtCan" render="txtPrecioT"
-                                                        listener="#{facturaBean.calcularTotalProducto()}" />
-                                                <f:validateRequired />
-                                            </h:inputText>
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtPrecioT">Precio Total:</label>
-                                            <h:outputText class="input-group-text" id="txtPrecioT"
-                                                          value="#{facturaBean.precioTotal}" />
-                                        </div>
-
-                                        <h:commandButton value="Registrar Detalle" action="#{facturaBean.addDetalle}" />
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="input-group mb-3">
-                                            <label for="txtPrecioSub">SubTotal:</label>
-                                            <h:outputText class="input-group-text" id="txtPrecioSub"
-                                                          value="#{facturaBean.subtotal}" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtIva">IVA:</label>
-                                            <h:outputText class="input-group-text" id="txtIva"
-                                                          value="#{facturaBean.iva}" />
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <label for="txtTot">Total:</label>
-                                            <h:outputText class="input-group-text" id="txtTot"
-                                                          value="#{facturaBean.total}" />
-                                        </div>    
-                                             <h:commandButton value="Registrar Factura" action="#{facturaBean.add}" />
-                                        
+                            <a href='registroUsuario.xhtml'> Agregar Usuario</a>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Datos Cuenta Factura</h4>
+                            <div class="input-group mb-3">
+                                <label for="txtNumeroCuenta">Número de cuenta de la Factura:</label>
+                                <h:inputText requiredMessage="Este campo es requerido"
+                                             value="#{facturaBean.numeroCuenta}" class="input-group-text"
+                                             id="txtNumeroCuenta">
+                                    <f:ajax execute="txtNumeroCuenta"
+                                            render="txtCorreo txtNombreCue txtApellidoCue"
+                                            listener="#{facturaBean.cargarDatosCuenta()}" />
+                                    <f:validateRequired />
+                                </h:inputText>
+                                <h:message for="txtNumeroCuenta"
+                                           style="color:red; margin-top: 0.5rem; display: block" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtCorreo">Correo del Usuario de la Cuenta</label>
+                                <h:outputText class="input-group-text" id="txtCorreo"
+                                              value="#{facturaBean.cuenta.correo}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtNombreCue">Nombre del usuario de la Cuenta:</label>
+                                <h:outputText value="#{facturaBean.cuenta.usuario.nombre}"
+                                              class="input-group-text" id="txtNombreCue" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtApellidoCue">Apellido del usuario de la Cuenta:</label>
+                                <h:outputText value="#{facturaBean.cuenta.usuario.apellido}"
+                                              class="input-group-text" id="txtApellidoCue" />
+                            </div>
+                        </div>
+                    </div>
 
 
 
-                                    </div>
-                                </div>
+                    <h4>Detalles de Factura</h4>
+                    <h:dataTable class="table table-striped" value="#{facturaBean.detalles}" var="o">
 
-                            </h:form>
+                        <h:column>
+                            <f:facet name="header">Descripcion</f:facet>
+                                #{o.descripcion}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Precio Unitario</f:facet>
+                                #{o.precioUnitario}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Cantidad</f:facet>
+                                #{o.cantidad}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Precio Total</f:facet>
+                                #{o.precioTotal}
+                        </h:column>
+
+                    </h:dataTable>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Ingresar Producto a Facturar</h5>
+                            <div class="input-group mb-3">
+                                <label for="txtProducto">Ingrese nombre Producto:</label>
+                                <h:inputText requiredMessage="Este campo es requerido"
+                                             value="#{facturaBean.nombreProducto}" class="input-group-text" id="txtProducto">
+                                    <f:ajax execute="txtProducto" render="txtPrecioPro txtStock"
+                                            listener="#{facturaBean.cargarDatosProducto()}" />
+                                    <f:validateRequired />
+                                </h:inputText>
+                                <h:message for="txtProducto" style="color:red; margin-top: 0.5rem; display: block" />
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label for="txtPrecioPro">Precio Unitario:</label>
+                                <h:outputText class="input-group-text" id="txtPrecioPro"
+                                              value="#{facturaBean.producto.precio}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtStock">Stock Producto:</label>
+                                <h:outputText class="input-group-text" id="txtStock"
+                                              value="#{facturaBean.producto.stock}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtCan">Cantidad:</label>
+                                <h:inputText requiredMessage="Este campo es requerido" value="#{facturaBean.cantidad}"
+                                             class="input-group-text" id="txtCan">
+                                    <f:ajax execute="txtCan" render="txtPrecioT"
+                                            listener="#{facturaBean.calcularTotalProducto()}" />
+                                    <f:validateRequired />
+                                </h:inputText>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtPrecioT">Precio Total:</label>
+                                <h:outputText class="input-group-text" id="txtPrecioT"
+                                              value="#{facturaBean.precioTotal}" />
+                            </div>
+
+                            <h:commandButton value="Registrar Detalle" action="#{facturaBean.addDetalle}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <label for="txtPrecioSub">SubTotal:</label>
+                                <h:outputText class="input-group-text" id="txtPrecioSub"
+                                              value="#{facturaBean.subtotal}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtIva">IVA:</label>
+                                <h:outputText class="input-group-text" id="txtIva"
+                                              value="#{facturaBean.iva}" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="txtTot">Total:</label>
+                                <h:outputText class="input-group-text" id="txtTot"
+                                              value="#{facturaBean.total}" />
+                            </div>    
+                            <h:commandButton value="Registrar Factura" action="#{facturaBean.add}" />
+
+
+
+
+                        </div>
+                    </div>
+
+                </h:form>
             </div><!-- /.container -->
+
+
+
         </ui:define>
     </ui:composition>
 </html>

@@ -14,8 +14,9 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.annotation.FacesConfig;
 import jakarta.inject.Named;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class UsuarioBean implements Serializable {
     private String nombre;
     private String apellido;
     private String cedula;
-    private LocalDate fechaNacimiento;
+    private String fechaNacimiento;
     private String tipo;
     
     Usuario usuario;
@@ -54,15 +55,16 @@ public class UsuarioBean implements Serializable {
     }
 
     public String add() throws Exception {
-        fechaNacimiento = java.time.LocalDate.now();
-        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo);
+        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimiento);
+        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fecha, tipo);
         usuarios = usuarioFacade.findAll();
         return "mensaje-exito?faces-redirect=true&texto=Persona ingresada con exito";
     }
+
     public String addCliente() throws Exception {
-        fechaNacimiento = java.time.LocalDate.now();
-        tipo="Cliente";
-        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fechaNacimiento, tipo);
+        Date fecha = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimiento);
+        tipo = "Cliente";
+        usuarioFacade.guardarUsuario(nombre, apellido, cedula, fecha, tipo);
         usuarios = usuarioFacade.findAll();
         return "mensaje-exitoEmpleado?faces-redirect=true&texto=Persona ingresada con exito";
     }
@@ -118,11 +120,11 @@ public class UsuarioBean implements Serializable {
         this.cedula = cedula;
     }
 
-    public LocalDate getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

@@ -11,6 +11,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -49,7 +50,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         return res;
     }
     
-    public void guardarUsuario(String nombre, String apellido, String cedula, LocalDate fecha, String tipoUsu) throws Exception {
+    public void guardarUsuario(String nombre, String apellido, String cedula,Date fecha, String tipoUsu) throws Exception {
         Usuario usu = new Usuario();
         usu.setCedula(cedula);
         usu.setApellido(apellido);
@@ -68,5 +69,5 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         facadeTipo.edit(tipo);
     }
   
-
+    
 }

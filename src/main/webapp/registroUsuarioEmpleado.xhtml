@@ -34,11 +34,14 @@
                     <h:inputText id="apellido" value="#{usuarioBean.apellido}"/>
                 </div>
 
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Fecha Nacimiento</span>
+                    <h:inputText id="fecha" value="#{usuarioBean.fechaNacimiento}"/>
+                </div>
 
                 <div>
                     <br></br><h:commandButton  class="btn btn-primary" value="Crear Usuario"  action="#{usuarioBean.addCliente()}"/>
-                    <a href="CrudPersona.xhtml">Listar Cliente</a>
-                    <a href="IngresarSucursal.xhtml">Ingresar Sucursal</a>
+                    <a href="CrudPersonaEmpleado.xhtml">Listar Cliente</a>
                 </div>
             </h:form>
 

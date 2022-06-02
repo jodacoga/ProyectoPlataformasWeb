@@ -60,7 +60,7 @@
                     <!-- Logo -->
                     <!-- ============================================================== -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="index.xhtml">
                             <!-- Logo icon --><b>
                                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                                 <!-- Dark Logo icon -->
@@ -113,8 +113,8 @@
                                                 <div class="u-img"><img src="./template/images/usuario.png" alt="user" />
                                                 </div>
                                                 <div class="u-text">
-                                                    <h4>Usuario</h4>
-                                                    <p class="text-muted">usuario@gmail.com</p>
+                                                    <h:outputLabel value="#{loginBean.nombreUsu}" />
+                                                    <p class="text-muted"><h:outputLabel value="#{loginBean.correo}" /></p>
 
                                                 </div>
                                             </div>
@@ -126,10 +126,10 @@
                                         <li role="separator" class="divider"></li>
                                         <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li> -->
                                         <li role="separator" class="divider"></li>
-                                        <li><h:form>
+                                        <li><h:form styleClass="text-center">
                                                 <h:commandButton id="boton-logout" action="#{loginBean.logout()}"
                                                                  value="Logout" class="btn btn-warning px-2" />
-                                                <i class="fa fa-power-off"></i>
+                                                <!--<i class="fa fa-power-off"></i>-->
                                             </h:form> </li>
                                     </ul>
                                 </div>
