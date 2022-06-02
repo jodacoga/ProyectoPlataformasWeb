@@ -33,10 +33,8 @@ public class CuentaFacade extends AbstractFacade<Cuenta> {
         if (usu == null) {
             throw new Exception("Cliente no registrado");
         }
-        c.setUsuario(usu);
-        Cuenta cuenta = usu.getCuenta();
-        cuenta.setUsuario(c.getUsuario());
-        usu.setCuenta(cuenta);
+        //c.setUsuario(usu);
+        usu.setCuenta(c);
         usuarioFacade.edit(usu);
     }
 

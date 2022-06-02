@@ -16,10 +16,10 @@
                 <br></br>        <div class="input-group mb-3">
                     <label for="txtNumeroCedula">Ingrese la cedula:</label>
                     <h:inputText requiredMessage="Este campo es requerido"
-                                 value="#{facturaBean.cedulaPersona}" class="input-group-text"
+                                 value="#{cuentaBean.cedulaCliente}" class="input-group-text"
                                  id="txtNumeroCedula">
                         <f:ajax execute="txtNumeroCedula" render="txtNombrePer txtApellidoPer"
-                                listener="#{facturaBean.cargarDatosUsuario()}" />
+                                listener="#{cuentaBean.cargarDatosUsuario()}" />
                         <f:validateRequired />
                     </h:inputText>
                     <h:message for="txtNumeroCedula"
@@ -29,11 +29,11 @@
                 <div class="input-group mb-3">
                     <label for="txtNombrePer">Nombre del usuario:</label>
                     <h:outputText class="input-group-text" id="txtNombrePer"
-                                  value="#{facturaBean.usuario.nombre}" />
+                                  value="#{cuentaBean.usuario.nombre}" />
                 </div>
                 <div class="input-group mb-3">
                     <label for="txtApellidoPer">Apellido del usuario:</label>
-                    <h:outputText value="#{facturaBean.usuario.apellido}" class="input-group-text"
+                    <h:outputText value="#{cuentaBean.usuario.apellido}" class="input-group-text"
                                   id="txtApellidoPer" />
                 </div>
                 <div class="input-group mb-3">
@@ -44,12 +44,12 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon3">Contrasena</span>
-                    <h:inputText id="apellido" value="#{cuentaBean.contrasena}"/>
+                    <h:inputSecret id="apellido" value="#{cuentaBean.contrasena}"/>
                 </div>
                 
                 <a href='registroUsuario.xhtml'> Agregar Usuario</a>    
                 <div>
-                    <br></br><h:commandButton  class="btn btn-primary" value="Crear Cuenta" />
+                    <br></br><h:commandButton  class="btn btn-primary" value="Crear Cuenta" action="#{cuentaBean.addCuenta()}"/>
                     
                 </div>
             </h:form>
