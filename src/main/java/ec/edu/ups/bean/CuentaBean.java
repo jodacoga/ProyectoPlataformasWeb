@@ -5,6 +5,7 @@
 package ec.edu.ups.bean;
 
 import ec.edu.ups.entidades.Cuenta;
+import ec.edu.ups.entidades.Usuario;
 import ec.edu.ups.facade.CuentaFacade;
 import ec.edu.ups.facade.UsuarioFacade;
 import jakarta.ejb.EJB;
@@ -35,6 +36,9 @@ public class CuentaBean implements Serializable{
         private String contrasena;
         
         private String cedulaCliente;
+        //private String nombre;
+        //private String apellido;
+        Usuario usuario = new Usuario();
         List<String> list = new ArrayList<>();
         Cuenta cuenta = new Cuenta();
      
@@ -49,9 +53,13 @@ public class CuentaBean implements Serializable{
 //        }
         
     public String addCuenta() throws Exception{
-        cuentaFacade.guardarCuenta(correo, contrasena, cedulaCliente);
+        usuario = usuarioFacade.getUsuarioCedula(cedulaCliente);
+        Cuenta cuenta = new Cuenta(correo, contrasena, usuario);
+        cuentaFacade.create(cuenta);
+        
+        //cuentaFacade.guardarCuenta(correo, contrasena, cedulaCliente);
         //cuenta = cuentaFacade.findAll();
-        return null;
+        return "mensaje-exito?faces-redirect=true&texto=Cuenta ingresada con exito";
     }
     
     public String buscarCorreo() throws Exception{
@@ -110,7 +118,32 @@ public class CuentaBean implements Serializable{
         this.codigo = codigo;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
+    public void cargarDatosUsuario() {
+        System.out.println("LLega hasta aki " + cedulaCliente);
+        if (cedulaCliente != null) {
+            System.out.println("la cedula es " + cedulaCliente);
+            usuario = usuarioFacade.getUsuarioCedula(cedulaCliente);
+            System.out.println("El Usuario es: !!!!  " + usuario.getCedula());
+
+        }
+
+    }
         
         
 }
