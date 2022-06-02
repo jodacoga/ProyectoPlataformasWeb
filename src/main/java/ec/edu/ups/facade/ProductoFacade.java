@@ -6,6 +6,7 @@ package ec.edu.ups.facade;
 
 import ec.edu.ups.entidades.CategoriaProducto;
 import ec.edu.ups.entidades.Producto;
+import ec.edu.ups.entidades.Sucursal;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -24,6 +25,9 @@ public class ProductoFacade extends AbstractFacade<Producto> {
 
     @EJB
     private CategoriaFacade categoriaFacade;
+
+    @EJB
+    private SucursalFacade sucursalFacade;
 
     public ProductoFacade() {
         super(Producto.class);
@@ -49,6 +53,19 @@ public class ProductoFacade extends AbstractFacade<Producto> {
         producto.add(p);
         catSucursal.setProducto(producto);
         categoriaFacade.edit(catSucursal);
+
+    }
+
+    public void agregarSucursal(String nombre, String nombreSucursal) {
+        Sucursal su = sucursalFacade.getSucursalByName(nombreSucursal);
+        Producto p = getProductoByName(nombre);
+        p.addProducto(su);
+        List<Producto> producto = su.getListaProductos();
+        su.addSucursal(p);
+        su.getListaProductos().add(p);
+        
+        sucursalFacade.edit(su);
+        
     }
 
     public Producto getProductoByName(String name) {
@@ -75,4 +92,5 @@ public class ProductoFacade extends AbstractFacade<Producto> {
         String jpqlCat = "select p from Producto p JOIN p.categoria c where c.nombre = '" + nombreCategoria + "'";
         return em.createQuery(jpqlCat, Producto.class).getResultList();
     }
+
 }

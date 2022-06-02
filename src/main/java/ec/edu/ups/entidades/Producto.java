@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -36,6 +37,7 @@ public class Producto implements Serializable {
     private double precio;
     //private byte imagen;
     private int stock;
+    
     @Transient
     private boolean editable;
 
@@ -46,7 +48,12 @@ public class Producto implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "producto")
     private DetalleFactura detalleFactura;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listaProductos")
+
+    @JoinTable(name = "productos_sucursal", joinColumns = {
+    @JoinColumn(name = "codigoProducto", referencedColumnName = "codigoProducto")}, inverseJoinColumns = {
+    @JoinColumn(name = "codigo_sucursal", referencedColumnName = "codigo")
+    })
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Sucursal> listaSucursal = new ArrayList<Sucursal>();
 
     public Producto(String nombre, String descripcion, double precio, int stock, CategoriaProducto categoria) {
@@ -140,7 +147,7 @@ public class Producto implements Serializable {
         this.listaSucursal = listaSucursal;
     }
     
-    public void addSucursal(Sucursal su){
+    public void addProducto(Sucursal su){
         this.listaSucursal.add(su);
     }
 

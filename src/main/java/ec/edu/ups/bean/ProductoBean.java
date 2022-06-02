@@ -43,6 +43,7 @@ public class ProductoBean implements Serializable {
     private String nombreSucursal;
     List<String> list = new ArrayList<>();
     List<Producto> productos = new ArrayList<>();
+    private List<String> sucursales = new ArrayList<>();
 
     @PostConstruct
     public void init() {
@@ -52,17 +53,13 @@ public class ProductoBean implements Serializable {
     public String add() throws Exception {
 
         productoFacade.guardarProducto(nombre, descripcion, precio, stock, nombreCategoria);
+        productoFacade.agregarSucursal(nombre, nombreSucursal);
+
         productos = productoFacade.findAll();
+
         return "mensaje-exito?faces-redirect=true&texto=Producto Creado con exito";
     }
-
-    public String addPro() throws Exception {
-
-        productoFacade.guardarProducto(nombre, descripcion, precio, stock, nombreCategoria);
-        productos = productoFacade.findAll();
-        return "mensaje-exitoEmpleado?faces-redirect=true&texto=Producto Creado con exito";
-    }
-
+    
     public String delete(Producto pro) {
         productoFacade.remove(pro);
         //list = sucursalFacade.findAll();
@@ -81,13 +78,14 @@ public class ProductoBean implements Serializable {
         return null;
     }
 
-    public List<String> getListaCategoria() {
-        list = categoriaFacade.getCategoriaNames();
-        return list;
+    public List<String> getListaSucursales() {
+        sucursales = sucursalFacade.getSucursalNames();
+
+        return sucursales;
     }
 
-    public List<String> getListaSucursales() {
-        list = sucursalFacade.getSucursalNames();
+    public List<String> getListaCategoria() {
+        list = categoriaFacade.getCategoriaNames();
         return list;
     }
 

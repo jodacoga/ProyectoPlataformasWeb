@@ -39,8 +39,7 @@ public class Sucursal implements Serializable{
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "sucursal")
     private List<Pedido> pedido = new ArrayList<Pedido>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listaSucursal")
     private List<Producto> listaProductos = new ArrayList<Producto>();
 
    
