@@ -37,7 +37,7 @@ public class LoginBean implements Serializable {
     @PostConstruct
     public void init() {
         cuenta = new Cuenta();
-        System.out.println("PILAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS");
+        System.out.println("INICIANDOOOOO....");
     }
 
     public String getCorreo() {
