@@ -53,7 +53,7 @@ public class CuentaBean implements Serializable{
         usuario = usuarioFacade.getUsuarioCedula(cedulaCliente);
         Cuenta cuenta = new Cuenta(correo, contrasena, usuario);
         cuentaFacade.create(cuenta);
-        
+        cuentas = cuentaFacade.findAll();
         //cuentaFacade.guardarCuenta(correo, contrasena, cedulaCliente);
         //cuenta = cuentaFacade.findAll();
         return "mensaje-exito?faces-redirect=true&texto=Cuenta ingresada con exito";
