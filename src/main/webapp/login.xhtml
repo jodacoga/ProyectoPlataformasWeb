@@ -55,13 +55,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
                         <div class="form-group m-t-40">
                             <div class="col-xs-12">
                                 <h:outputLabel value="Correo"/>
-                                <h:inputText class="form-control" value="#{loginBean.correo}"/>
+                                <h:inputText class="form-control" value="#{loginBean.correo}"
+                                             id="input-1"
+                                             h:placeholder="Ingrese el correo"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <h:outputLabel value="Password"/>
-                                <h:inputSecret class="form-control" value="#{loginBean.contra}" />
+                                <h:inputSecret class="form-control" value="#{loginBean.contra}"
+                                               id="input-2"
+                                               h:placeholder="Ingrese la clave" />
                             </div>
                         </div>
                         <h:commandButton action="#{loginBean.login()}"
