@@ -80,12 +80,17 @@ public class ListarPedidoBean implements Serializable {
             p.setEditable(false);
             return null;
         } 
+        else{
+            
+        
         pedidoFacade.edit(p);
         
         pedidos = pedidoFacade.findAll();
         p.setEditable(false);
         return null;
-    }
+        }
+        
+        }
     
     public void anular(int codigoFactura) {
         Factura f = facturaFacade.getCodigo(codigoFactura);
