@@ -17,10 +17,7 @@
                             <h:form>
                                 <h4>Sucursales Disponibles</h4>
                                 <h:dataTable class="table table-striped" value="#{sucursalBean.sucursales}" var="o" >
-                                    <h:column>
-                                        <f:facet name="header">Codigo</f:facet>
-                                            #{o.codigo}
-                                    </h:column>
+                                   
                                     <h:column>
                                         <f:facet name="header">Nombre</f:facet>
                                         <h:inputText value="#{o.nombre}" size="10" rendered="#{o.editable}" />

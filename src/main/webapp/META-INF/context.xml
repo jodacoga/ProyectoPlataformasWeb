@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="ProyectoPlataformasWeb" reloadable="false">
+  <!--<Context path="/ProyectoPlataformasWeb"/>-->
+  <!-- Default set of monitored resources. If one of these changes, the    -->
+  <!-- web application will be reloaded.                                   -->
+
+  <!-- Uncomment this to enable session persistence across Tomcat restarts -->
+  <!--
+    <Manager pathname="SESSIONS.ser" />
+    -->
+<!--  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="PracticaPlataformasWeb" password="2309" type="javax.sql.DataSource" url="jdbc:mysql://172.24.128.1:3306/practicaplataformasweb" username="root"/>
+ <resource-env-ref>
+        <description>
+            Object factory for MyBean instances.
+        </description>
+        <resource-env-ref-name>
+            PracticaPlataformasWeb
+        </resource-env-ref-name>
+    </resource-env-ref>-->
+</Context>

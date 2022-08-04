@@ -19,7 +19,7 @@ import java.util.List;
 @Stateless
 public class CategoriaFacade extends AbstractFacade<CategoriaProducto> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
  
     @EJB

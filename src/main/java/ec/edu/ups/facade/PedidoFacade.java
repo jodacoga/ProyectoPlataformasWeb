@@ -16,7 +16,7 @@ import jakarta.persistence.PersistenceContext;
 @Stateless
 public class PedidoFacade extends AbstractFacade<Pedido> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
 
     public PedidoFacade() {
