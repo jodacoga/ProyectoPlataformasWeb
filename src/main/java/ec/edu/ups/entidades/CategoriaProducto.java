@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
  * @author johan
  */
 @Entity
+@Table(name = "CategoriaFacade")
 public class CategoriaProducto implements Serializable {
 
     private static final long serialVersionUID = 1L;

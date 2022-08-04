@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
@@ -23,6 +24,7 @@ import java.util.List;
  * @author johan
  */
 @Entity
+@Table(name="Factura")
 public class Factura implements Serializable{
     
     private static final long serialVersionUID = 1L;

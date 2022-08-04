@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.sql.Time;
 
@@ -19,6 +20,7 @@ import java.sql.Time;
  * @author johan
  */
 @Entity
+@Table(name="Pedido")
 public class Pedido implements Serializable{
     
     private static final long serialVersionUID = 1L;
