@@ -43,7 +43,7 @@ public class Factura implements Serializable{
     @JoinColumn
     private Usuario usuarioFactura;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn
     private TipoPago tipoPago;
     
