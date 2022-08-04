@@ -11,8 +11,8 @@
     <welcome-file-list>
         <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
-
-
+   
+   
       <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>PracticaPlataformasWeb</res-ref-name>
@@ -27,5 +27,8 @@
             PracticaPlataformasWeb
         </resource-env-ref-name>
     </resource-env-ref>-->
+          
+   
+   
  
 </web-app>
