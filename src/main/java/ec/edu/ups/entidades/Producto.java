@@ -14,6 +14,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import java.util.List;
  * @author johan
  */
 @Entity
+@Table(name="producto")
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;

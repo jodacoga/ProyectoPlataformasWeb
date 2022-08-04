@@ -15,7 +15,7 @@ import java.util.List;
 @Stateless
 public class CuentaFacade extends AbstractFacade<Cuenta> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
 
     @EJB

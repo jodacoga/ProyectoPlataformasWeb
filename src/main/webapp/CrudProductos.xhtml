@@ -18,10 +18,6 @@
 
                                 <h:dataTable class="table table-striped" value="#{productoBean.productos}" var="o" >
                                     <h:column>
-                                        <f:facet name="header">Codigo</f:facet>
-                                            #{o.codigoProducto}
-                                    </h:column>
-                                    <h:column>
                                         <f:facet name="header">Nombre</f:facet>
                                         <h:inputText value="#{o.nombre}" size="10" rendered="#{o.editable}" />
                                         <h:outputText value="#{o.nombre}" rendered="#{not o.editable}" />

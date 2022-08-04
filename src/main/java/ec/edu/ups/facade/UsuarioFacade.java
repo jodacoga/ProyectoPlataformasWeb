@@ -22,7 +22,7 @@ import java.util.List;
 public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
     
     @EJB

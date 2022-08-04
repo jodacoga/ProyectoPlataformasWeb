@@ -17,7 +17,7 @@ import java.util.List;
 @Stateless
 public class FacturaFacade extends AbstractFacade<Factura> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
 
     public FacturaFacade() {

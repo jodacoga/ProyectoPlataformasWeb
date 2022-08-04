@@ -17,7 +17,7 @@ import jakarta.persistence.PersistenceContext;
 @Stateless
 public class TarjetaCreditoFacade extends AbstractFacade<TarjetaCredito> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
 
     public TarjetaCreditoFacade() {

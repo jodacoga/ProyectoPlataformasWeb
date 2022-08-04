@@ -17,7 +17,7 @@ import java.util.List;
 @Stateless
 public class PedidoFacade extends AbstractFacade<Pedido> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
 
     public PedidoFacade() {

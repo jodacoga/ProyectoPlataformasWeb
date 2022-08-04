@@ -17,7 +17,7 @@ import java.util.List;
 @Stateless
 public class SucursalFacade extends AbstractFacade<Sucursal> {
 
-    @PersistenceContext(name = "PlataformasWeb")
+    @PersistenceContext(name = "PracticaPlataformasWeb")
     private EntityManager em;
 
     public SucursalFacade() {

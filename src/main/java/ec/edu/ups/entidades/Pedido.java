@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -15,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import java.io.Serializable;
 import java.sql.Time;
@@ -25,6 +27,7 @@ import java.util.List;
  * @author johan
  */
 @Entity
+@Table(name="Pedido")
 public class Pedido implements Serializable{
 
     private static final long serialVersionUID = 1L;
