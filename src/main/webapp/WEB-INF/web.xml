@@ -12,7 +12,7 @@
         <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
    
-   
+   <!--Holaaa probando automatizacion de git-->
       <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>PracticaPlataformasWeb</res-ref-name>
