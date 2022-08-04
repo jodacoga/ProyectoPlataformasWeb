@@ -8,6 +8,7 @@ import ec.edu.ups.entidades.Pedido;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -26,6 +27,13 @@ public class PedidoFacade extends AbstractFacade<Pedido> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+     public List<Pedido> getPedido() {
+        String jpql = "SELECT u FROM Pedido u ";
+        List<Pedido> res = em.createQuery(jpql).getResultList();
+        System.out.println(res);
+        return res;//em.createQuery(jpql, Pedido.class).getResultList();
     }
 
 }
